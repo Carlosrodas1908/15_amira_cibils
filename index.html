@@ -8,6 +8,9 @@
   <!-- Fuentes elegantes -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Allura&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
+  <!-- Íconos Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
   <style>
     * {
       margin: 0;
@@ -19,9 +22,8 @@
       height: 100%;
       width: 100%;
       font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-      text-align: center;
       color: white;
+      overflow: hidden; /* 👈 sin scroll */
     }
 
     .background {
@@ -47,14 +49,15 @@
     .content {
       background: rgba(0, 0, 0, 0.5);
       border-radius: 25px;
-      padding: 20px;
       margin: 15px;
       width: calc(100% - 30px);
-      min-height: calc(100vh - 30px);
+      height: calc(100% - 30px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-align: center;
+      padding: 20px;
     }
 
     h1 {
@@ -91,7 +94,6 @@
 
     #typingText {
       font-size: 5vw;
-      line-height: 1.5;
       white-space: pre-wrap;
       min-height: 3em;
       opacity: 0;
@@ -108,7 +110,7 @@
     }
 
     .pretty-button {
-      margin-top: 20px;
+      margin-top: 15px;
       background: linear-gradient(135deg, #ff69b4, #ffb6c1);
       color: white;
       border: none;
@@ -120,6 +122,10 @@
       box-shadow: 0 4px 15px rgba(255, 105, 180, 0.6);
       animation: float 2s ease-in-out infinite, fadeIn 2s ease forwards;
       transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
 
     .pretty-button:hover {
@@ -128,11 +134,16 @@
       transform: scale(1.05);
     }
 
-    @media (min-width: 768px) {
-      h1 { font-size: 80px; }
-      .nombre { font-size: 60px; }
-      #typingText { font-size: 24px; }
-      .pretty-button { font-size: 20px; padding: 15px 40px; }
+    .continue-button {
+      display: none;
+    }
+
+    .extra-buttons {
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+      width: 100%;
     }
 
     @keyframes float {
@@ -146,15 +157,11 @@
       to { opacity: 1; }
     }
 
-    .continue-button {
-      display: none;
-    }
-
-    .extra-buttons {
-      display: none;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 30px;
+    @media (min-width: 768px) {
+      h1 { font-size: 80px; }
+      .nombre { font-size: 60px; }
+      #typingText { font-size: 24px; }
+      .pretty-button { font-size: 20px; padding: 15px 40px; }
     }
   </style>
 </head>
@@ -166,15 +173,26 @@
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
 
-    <button class="pretty-button" id="startBtn">Comenzar celebración</button>
+    <button class="pretty-button" id="startBtn">
+      <i class="fas fa-play"></i> Comenzar celebración
+    </button>
+
     <p id="typingText"></p>
 
-    <button class="pretty-button continue-button" id="continueBtn">Continuar</button>
+    <button class="pretty-button continue-button" id="continueBtn">
+      <i class="fas fa-arrow-right"></i> Continuar
+    </button>
 
     <div class="extra-buttons" id="extraBtns">
-      <button class="pretty-button" onclick="window.open('https://maps.google.com/?q=salón+de+fiestas', '_blank')">Ver ubicación</button>
-      <button class="pretty-button" onclick="confirmarAsistencia()">Confirmar asistencia</button>
-      <button class="pretty-button" onclick="alert('Por favor llegar 15 minutos antes. Evento formal.')">Nota importante</button>
+      <button class="pretty-button" onclick="window.open('https://maps.google.com/?q=salón+de+fiestas', '_blank')">
+        <i class="fas fa-map-marker-alt"></i> Ver ubicación
+      </button>
+      <button class="pretty-button" onclick="confirmarAsistencia()">
+        <i class="fab fa-whatsapp"></i> Confirmar asistencia
+      </button>
+      <button class="pretty-button" onclick="alert('Por favor llegar 15 minutos antes. Evento formal.')">
+        <i class="fas fa-info-circle"></i> Nota importante
+      </button>
     </div>
   </div>
 
@@ -198,7 +216,7 @@
         i++;
         setTimeout(typeText, 40);
       } else {
-        continueBtn.style.display = "inline-block";
+        continueBtn.style.display = "inline-flex";
       }
     }
 
