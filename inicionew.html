@@ -21,11 +21,11 @@
       font-family: 'Arial', sans-serif;
       color: white;
       overflow-x: hidden;
+      background: url('abi15.jpg') center/cover no-repeat fixed;
     }
 
     body {
       position: relative;
-      background: url('abi15.jpg') center/cover no-repeat fixed;
     }
 
     .background {
@@ -56,22 +56,21 @@
       font-size: 9vw;
       color: #fff;
       text-align: center;
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      /* Quitamos fixed para que no empuje el contenido */
+      position: relative;
       white-space: nowrap;
-      z-index: 10;
       user-select: none;
       background: rgba(0,0,0,0.1);
       padding: 0 15px;
       border-radius: 10px;
+      display: inline-block;
+      margin: 0 auto;
     }
 
     .nombre {
       font-family: 'Tangerine', cursive;
-      font-size: 11vw;
-      margin-top: 10px;
+      font-size: 10vw; /* un poco más pequeño para que no se salga */
+      margin-top: 8px; /* menos margen para acercar */
       background: rgba(255, 255, 255, 0.15);
       padding: 10px 25px;
       border: 2px solid #ffe6f0;
@@ -80,10 +79,13 @@
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
       display: inline-block;
+      max-width: 90vw; /* para que no desborde */
+      word-wrap: break-word;
     }
 
     .container {
-      height: 100vh;
+      /* Quitamos height 100vh para evitar scroll vertical */
+      min-height: 100vh; /* que ocupe al menos toda la pantalla */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -91,7 +93,9 @@
       padding: 20px;
       background: rgba(0, 0, 0, 0.4);
       border-radius: 20px;
-      margin: 10px;
+      margin: 10px auto 30px; /* margin bottom para que no quede muy pegado abajo */
+      max-width: 480px; /* ancho máximo para móviles grandes */
+      box-sizing: border-box;
       text-align: center;
     }
 
@@ -129,7 +133,7 @@
 
     @media (min-width: 768px) {
       header h1 { font-size: 60px; }
-      .nombre { font-size: 48px; }
+      .nombre { font-size: 48px; max-width: none; }
       .container p { font-size: 24px; }
       .info { font-size: 18px; }
       button { font-size: 18px; width: 300px; }
@@ -142,7 +146,7 @@
 
   <div class="container">
     <header>
-      <h1>Mis 15 Años</h1><br>
+      <h1>Mis 15 Años</h1>
       <div class="nombre">Amira Abigail Cibils De La Cruz</div>
     </header>
     <p>¡Estás invitado a celebrar conmigo!</p>
