@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -56,12 +57,10 @@
       padding: 25px 15px;
       background: rgba(0, 0, 0, 0.5);
       border-radius: 20px;
-      margin: 10px;
+      margin: 10px auto;
       text-align: center;
       position: relative;
       max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
     }
     .text-block {
       font-family: 'Poppins', sans-serif;
@@ -105,6 +104,7 @@
       box-shadow: 0 8px 15px rgba(208, 0, 111, 0.4);
       color: white;
       background: linear-gradient(135deg, #ff5f7e, #d0006f);
+      animation: float 3s ease-in-out infinite;
     }
     button:hover {
       background: linear-gradient(135deg, #ff3a63, #a8005c);
@@ -129,42 +129,19 @@
       transform: translateY(3px);
     }
     #startBtn {
-  display: none;
-  margin-top: 30px;
-  padding: 15px 35px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  background: linear-gradient(135deg, #ff5f7e, #d0006f);
-  color: white;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0 8px 15px rgba(208, 0, 111, 0.4);
-  transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
-  user-select: none;
-  outline: none;
-  animation: float 3s ease-in-out infinite;
-}
-
-    #startBtn {
       display: none;
     }
     #secondContainer {
       display: none;
     }
     @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-#startBtn {
-  display: none;
-  animation: float 3s ease-in-out infinite;
-}
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
     @media (min-width: 768px) {
       h1 { font-size: 50px; }
       .text-block {
@@ -172,97 +149,86 @@
         min-height: 5em;
         letter-spacing: 0.02em;
       }
-    }#second-buttons {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-
-#second-buttons button {
-  width: 220px;
-  padding: 15px 35px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  user-select: none;
-  outline: none;
-  color: white;
-  background: linear-gradient(135deg, #ff5f7e, #d0006f);
-  box-shadow: 0 8px 15px rgba(208, 0, 111, 0.4);
-  transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
-  animation: float 3s ease-in-out infinite;
-}
-
-#second-buttons button:hover {
-  background: linear-gradient(135deg, #ff3a63, #a8005c);
-  box-shadow: 0 12px 20px rgba(168, 0, 92, 0.6);
-}
-
-#second-buttons button:active {
-  background: linear-gradient(135deg, #a8005c, #6b0040);
-  box-shadow: 0 4px 8px rgba(107, 0, 64, 0.8);
-  transform: translateY(3px);
-}
-
-.nombre {
-  font-family: 'Tangerine', cursive;
-  font-size: 10vw;
-  margin: 80px auto 20px; /* margen para que quede bien debajo del h1 */
-  background: rgba(255, 255, 255, 0.15);
-  padding: 10px 25px;
-  border: 2px solid #ffe6f0;
-  border-radius: 20px;
-  color: #ffe6f0;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-  display: inline-block;
-  max-width: 90vw;
-  word-wrap: break-word;
-  position: fixed;
-  top: 90px; /* justo debajo del h1 que está a 20px */
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  z-index: 10;
-  user-select: none;
-}
-
-@media (min-width: 768px) {
-  .nombre {
-    font-size: 48px;
-    top: 70px;
-  }
-}
-
+    }
+    #second-buttons {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    #second-buttons button {
+      width: 220px;
+      padding: 15px 35px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      user-select: none;
+      outline: none;
+      color: white;
+      background: linear-gradient(135deg, #ff5f7e, #d0006f);
+      box-shadow: 0 8px 15px rgba(208, 0, 111, 0.4);
+      transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+    #second-buttons button:hover {
+      background: linear-gradient(135deg, #ff3a63, #a8005c);
+      box-shadow: 0 12px 20px rgba(168, 0, 92, 0.6);
+    }
+    #second-buttons button:active {
+      background: linear-gradient(135deg, #a8005c, #6b0040);
+      box-shadow: 0 4px 8px rgba(107, 0, 64, 0.8);
+      transform: translateY(3px);
+    }
+    .nombre {
+      font-family: 'Tangerine', cursive;
+      font-size: 10vw;
+      margin: 15px 0 30px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 10px 25px;
+      border: 2px solid #ffe6f0;
+      border-radius: 20px;
+      color: #ffe6f0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+      display: inline-block;
+      max-width: 90vw;
+      word-wrap: break-word;
+      text-align: center;
+      user-select: none;
+    }
+    @media (min-width: 768px) {
+      .nombre {
+        font-size: 48px;
+      }
+    }
   </style>
+
 </head>
 <body>
   <div class="background"></div>
 
-<h1>Mis 15 Años</h1>
-<div class="nombre">Amira Abigail Cibils De La Cruz</div>
+  <h1>Mis 15 Años</h1>
 
   <!-- Primer bloque -->
   <div id="firstContainer" class="container">
+    <div class="nombre">Amira Abigail Cibils De La Cruz</div>
     <div id="typing-text" class="text-block typing"></div>
     <button id="startBtn">Comenzar</button>
   </div>
-<!-- Segundo bloque -->
-<div id="secondContainer" class="container">
-  <div id="second-text" class="text-block"></div>
-  <div id="second-buttons">
-    <button id="locationBtn">Ver Ubicación</button>
-    <button id="confirmBtn">Confirmar Asistencia</button>
-    <button id="countdownBtn">Cuenta Regresiva</button>
+
+  <!-- Segundo bloque -->
+  <div id="secondContainer" class="container">
+    <div id="second-text" class="text-block"></div>
+    <div id="second-buttons">
+      <button id="locationBtn">Ver Ubicación</button>
+      <button id="confirmBtn">Confirmar Asistencia</button>
+      <button id="countdownBtn">Cuenta Regresiva</button>
+    </div>
+    <button id="backBtn">Volver</button>
   </div>
-  <button id="backBtn">Volver</button>
-</div>
-
-
 
   <script>
     const firstText = `Hace 15 años nació una hermosa niña enviada por Dios
@@ -315,7 +281,7 @@ Uno de esos momentos ha llegado.`;
     };
 
     startBtn.addEventListener('click', () => {
-      // Ocultar primer bloque
+      // Ocultar primer bloque y nombre
       firstContainer.style.display = 'none';
       // Mostrar segundo bloque
       secondContainer.style.display = 'flex';
