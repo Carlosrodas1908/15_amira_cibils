@@ -28,24 +28,23 @@
       text-align: center;
       color: white;
       position: relative;
+      padding: 20px;
     }
 
     .background {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: url('abi15.jpg') center/cover no-repeat;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('abi150.jpg') center/cover no-repeat;
       z-index: -1;
       animation: zoom 10s ease-in-out infinite alternate;
     }
 
     @keyframes zoom {
-      0% {
-        transform: scale(1.05);
-      }
-      100% {
-        transform: scale(1.2);
-      }
+      0% { transform: scale(1.05); }
+      100% { transform: scale(1.2); }
     }
 
     .content {
@@ -60,11 +59,24 @@
       font-family: 'Great Vibes', cursive;
       font-size: 10vw;
       margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(-30px);
+      animation: flyIn 1.2s ease-out forwards;
     }
 
-    p {
+    @keyframes flyIn {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    #typingText {
       font-size: 5vw;
       line-height: 1.5;
+      white-space: pre-wrap;
+      min-height: 3em;
+      text-align: center;
     }
 
     @media (min-width: 768px) {
@@ -72,9 +84,18 @@
         font-size: 60px;
       }
 
-      p {
+      #typingText {
         font-size: 24px;
       }
+    }
+
+    #typingText::after {
+      content: '|';
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
     }
   </style>
 </head>
@@ -84,8 +105,26 @@
 
   <div class="content">
     <h1>Mis 15 Años</h1>
-    <p>Bienvenidos a mi celebración. Gracias por acompañarme en este día tan especial.</p>
+    <p id="typingText"></p>
   </div>
+
+  <script>
+    const message = "Bienvenidos a mi celebración. Gracias por acompañarme en este día tan especial.";
+    const typingText = document.getElementById("typingText");
+    let i = 0;
+
+    function typeText() {
+      if (i < message.length) {
+        typingText.textContent += message.charAt(i);
+        i++;
+        setTimeout(typeText, 40); // velocidad del tipeo
+      }
+    }
+
+    window.onload = () => {
+      setTimeout(typeText, 1200); // esperar a que h1 termine la animación
+    };
+  </script>
 
 </body>
 </html>
