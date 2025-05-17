@@ -180,16 +180,29 @@
     </div>
   </div>
 
-  <div class="section" id="ubicacion">
-    <h1>Mis 15 Años</h1>
-    <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
-    <p><strong>📅 Fecha:</strong> 5 de diciembre</p>
-    <p><strong>🕘 Hora:</strong> 21:00 hs</p>
-    <p><strong>📍 Dirección:</strong> Quinta Los Cedrales</p>
-    <iframe src="https://www.google.com/maps/embed?..." allowfullscreen loading="lazy"></iframe>
-    <button class="pretty-button" onclick="window.open('https://maps.app.goo.gl/tVzjMdPHn13PTntz5', '_blank')"><i class="fas fa-map-marked-alt"></i> Ir a Google Maps</button>
-    <button class="pretty-button" onclick="showSection('main')"><i class="fas fa-arrow-left"></i> Volver</button>
-  </div>
+<div class="section" id="ubicacion">
+  <h1>Mis 15 Años</h1>
+  <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
+  <p><strong>📅 Fecha:</strong> 5 de diciembre</p>
+  <p><strong>🕘 Hora:</strong> 21:00 hs</p>
+  <p><strong>📍 Dirección:</strong> Quinta Los Cedrales</p>
+  
+  <!-- Mapa de Paraguay embebido -->
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3601.147229881987!2d-57.60462432484779!3d-25.33531582885945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da98a8ee4f76b%3A0xc94e4fc89bc8a660!2sQuinta%20Los%20Cedrales!5e0!3m2!1ses-419!2spy!4v1715975396720!5m2!1ses-419!2spy" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+
+  <button class="pretty-button" onclick="window.open('https://maps.app.goo.gl/tVzjMdPHn13PTntz5', '_blank')">
+    <i class="fas fa-map-marked-alt"></i> Ir a Google Maps
+  </button>
+
+  <button class="pretty-button" onclick="showSection('main')">
+    <i class="fas fa-arrow-left"></i> Volver
+  </button>
+</div>
 
   <div class="section" id="notas">
     <h1>Mis 15 Años</h1>
@@ -198,11 +211,19 @@
     <p>🕖 <strong>Misa:</strong> 19:00 hs</p>
     <p>🎉 <strong>Recepción:</strong> 21:00 hs</p>
     <p>💃 <strong>Presentación:</strong> 22:00 hs</p>
-    <div style="margin-top: 20px; background: rgba(255,255,255,0.15); padding: 15px; border-radius: 15px; max-width: 600px;">
-      <p>🧸 Agradecemos su comprensión,</p>
-      <p>este evento ha sido pensado especialmente para adultos,</p>
-      <p>por lo que no se admiten niños.</p>
-    </div>
+   <div style="margin-top: 20px; background: rgba(255, 255, 255, 0.2); padding: 20px; border-left: 6px solid #ff69b4; border-radius: 15px; max-width: 650px; text-align: left;">
+  <p style="font-weight: 600; font-size: 1.1em; color: #ffe6f0;">
+    🧸 Agradecemos profundamente su comprensión.
+  </p>
+  <p style="margin-top: 8px;">
+    Este evento ha sido organizado especialmente para el disfrute de los adultos.
+  </p>
+  <p style="margin-top: 5px;">
+    Por motivos de seguridad y para preservar el ambiente del festejo, 
+    les pedimos amablemente que no asistan con niños.
+  </p>
+</div>
+
     <button class="pretty-button" onclick="showSection('main')"><i class="fas fa-arrow-left"></i> Volver</button>
   </div>
 
