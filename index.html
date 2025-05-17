@@ -2,13 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Mis 15 Años</title>
 
   <!-- Fuentes elegantes -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Allura&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
- 
+
   <style>
     * {
       margin: 0;
@@ -25,43 +24,42 @@
       color: white;
     }
 
-    /* Fondo que cubre toda la pantalla y se adapta */
-  .background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('abi15.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* 👈 Esta línea es la clave */
-  z-index: -1;
-  animation: zoom 20s ease-in-out infinite alternate;
-}
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('abi15.jpg'); /* Asegurate que esta imagen esté en tu carpeta */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      z-index: -1;
+      animation: zoom 20s ease-in-out infinite alternate;
+    }
 
     @keyframes zoom {
       0% { transform: scale(1); }
       100% { transform: scale(1.1); }
     }
 
-   .content {
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 25px;           /* 👈 Borde bien redondeado */
-  padding: 20px;
-  margin: 15px;                  /* 👈 Margen externo de 15px */
-  width: calc(100% - 30px);      /* 👈 Para que respete el margen horizontal */
-  height: calc(100vh - 30px);    /* 👈 Para que respete el margen vertical */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+    .content {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 25px;
+      padding: 20px;
+      margin: 15px;
+      width: calc(100% - 30px);
+      min-height: calc(100vh - 30px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
     h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 14vw;
+      font-size: 12vw;
       margin-bottom: 10px;
       color: #ffdee9;
       text-shadow: 0 0 10px #ff69b4;
@@ -71,7 +69,7 @@
 
     .nombre {
       font-family: 'Allura', cursive;
-      font-size: 9vw;
+      font-size: 8vw;
       color: #ffb6c1;
       margin-bottom: 20px;
       opacity: 0;
@@ -79,26 +77,16 @@
     }
 
     @keyframes flyIn {
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     @keyframes fadeInName {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes glow {
-      from {
-        text-shadow: 0 0 5px #ffb6c1, 0 0 10px #ff69b4;
-      }
-      to {
-        text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493;
-      }
+      from { text-shadow: 0 0 5px #ffb6c1, 0 0 10px #ff69b4; }
+      to { text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493; }
     }
 
     #typingText {
@@ -106,7 +94,6 @@
       line-height: 1.5;
       white-space: pre-wrap;
       min-height: 3em;
-      text-align: center;
       opacity: 0;
       transition: opacity 0.5s ease-in;
     }
@@ -120,23 +107,37 @@
       50% { opacity: 0; }
     }
 
-    .start-button {
+    .pretty-button {
       margin-top: 20px;
-      background-color: #ff69b4;
+      background: linear-gradient(135deg, #ff69b4, #ffb6c1);
       color: white;
       border: none;
-      font-size: 20px;
-      padding: 15px 40px;
-      border-radius: 30px;
+      font-size: 4.5vw;
+      padding: 14px 30px;
+      border-radius: 40px;
       cursor: pointer;
       font-weight: bold;
-      box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.6);
       animation: float 2s ease-in-out infinite, fadeIn 2s ease forwards;
+      transition: all 0.3s ease;
+    }
+
+    .pretty-button:hover {
+      background: linear-gradient(135deg, #ff85c1, #ffc1d6);
+      box-shadow: 0 6px 25px rgba(255, 105, 180, 0.8);
+      transform: scale(1.05);
+    }
+
+    @media (min-width: 768px) {
+      h1 { font-size: 80px; }
+      .nombre { font-size: 60px; }
+      #typingText { font-size: 24px; }
+      .pretty-button { font-size: 20px; padding: 15px 40px; }
     }
 
     @keyframes float {
       0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-8px); }
       100% { transform: translateY(0); }
     }
 
@@ -145,10 +146,15 @@
       to { opacity: 1; }
     }
 
-    @media (min-width: 768px) {
-      h1 { font-size: 80px; }
-      .nombre { font-size: 60px; }
-      #typingText { font-size: 24px; }
+    .continue-button {
+      display: none;
+    }
+
+    .extra-buttons {
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 30px;
     }
   </style>
 </head>
@@ -160,8 +166,16 @@
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
 
-    <button class="start-button" id="startBtn">Comenzar celebración</button>
+    <button class="pretty-button" id="startBtn">Comenzar celebración</button>
     <p id="typingText"></p>
+
+    <button class="pretty-button continue-button" id="continueBtn">Continuar</button>
+
+    <div class="extra-buttons" id="extraBtns">
+      <button class="pretty-button" onclick="window.open('https://maps.google.com/?q=salón+de+fiestas', '_blank')">Ver ubicación</button>
+      <button class="pretty-button" onclick="alert('Gracias por confirmar tu asistencia 💖')">Confirmar asistencia</button>
+      <button class="pretty-button" onclick="alert('Por favor llegar 15 minutos antes. Evento formal.')">Nota importante</button>
+    </div>
   </div>
 
   <audio id="bgMusic" loop>
@@ -173,6 +187,8 @@
     const message = "Bienvenidos a mi celebración. Gracias por acompañarme en este día tan especial.";
     const typingText = document.getElementById("typingText");
     const startBtn = document.getElementById("startBtn");
+    const continueBtn = document.getElementById("continueBtn");
+    const extraBtns = document.getElementById("extraBtns");
     const bgMusic = document.getElementById("bgMusic");
     let i = 0;
 
@@ -181,18 +197,23 @@
         typingText.textContent += message.charAt(i);
         i++;
         setTimeout(typeText, 40);
+      } else {
+        continueBtn.style.display = "inline-block";
       }
     }
 
     startBtn.addEventListener("click", () => {
       startBtn.style.display = "none";
       typingText.style.opacity = 1;
-
       bgMusic.play().catch(err => {
         console.warn("Autoplay bloqueado por el navegador:", err);
       });
-
       setTimeout(typeText, 400);
+    });
+
+    continueBtn.addEventListener("click", () => {
+      continueBtn.style.display = "none";
+      extraBtns.style.display = "flex";
     });
   </script>
 
