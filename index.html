@@ -1,310 +1,91 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mis 15 Años</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
   <style>
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
+
     html, body {
-      height: 100%; width: 100%; overflow: hidden;
-      font-family: Arial, sans-serif;
-      background: url('abi15.jpg') center/cover no-repeat fixed;
-      color: white;
+      height: 100%;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
     }
-    .background {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background-image: url('abi15.jpg');
-      background-position: center;
-      background-size: cover;
-      z-index: -1;
-      animation: zoomEffect 5s ease-in-out infinite alternate;
-      will-change: transform;
-    }
-    @keyframes zoomEffect {
-      0% { transform: scale(1.05); }
-      100% { transform: scale(1.15); }
-    }
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 12vw;
-      color: #fff;
-      text-align: center;
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      z-index: 10;
-      user-select: none;
-      background: rgba(0,0,0,0.1);
-      padding: 0 15px;
-      border-radius: 10px;
-    }
-    .container {
-      height: 100vh;
+
+    body {
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 25px 15px;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .background {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: url('abi15.jpg') center/cover no-repeat;
+      z-index: -1;
+      animation: zoom 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes zoom {
+      0% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1.2);
+      }
+    }
+
+    .content {
+      padding: 20px 30px;
       background: rgba(0, 0, 0, 0.5);
       border-radius: 20px;
-      margin: 10px auto;
-      text-align: center;
-      position: relative;
-      max-width: 900px;
+      max-width: 800px;
+      width: 90%;
     }
-    .text-block {
-      font-family: 'Poppins', sans-serif;
-      font-size: 6vw;
-      max-width: 90vw;
-      min-height: 8em;
-      white-space: pre-wrap;
-      overflow-wrap: break-word;
-      font-weight: 400;
-      line-height: 1.6;
-      letter-spacing: 0.03em;
-      user-select: none;
-      position: relative;
-    }
-    .text-block.typing::after {
-      content: '';
-      display: inline-block;
-      width: 3px;
-      height: 1.2em;
-      background-color: white;
-      margin-left: 5px;
-      animation: blink 1s steps(2, start) infinite;
-      vertical-align: bottom;
-      visibility: visible;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-    button {
-      margin-top: 30px;
-      padding: 15px 35px;
-      font-size: 1.3rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      user-select: none;
-      outline: none;
-      transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
-      box-shadow: 0 8px 15px rgba(208, 0, 111, 0.4);
-      color: white;
-      background: linear-gradient(135deg, #ff5f7e, #d0006f);
-      animation: float 3s ease-in-out infinite;
-    }
-    button:hover {
-      background: linear-gradient(135deg, #ff3a63, #a8005c);
-      box-shadow: 0 12px 20px rgba(168, 0, 92, 0.6);
-    }
-    button:active {
-      background: linear-gradient(135deg, #a8005c, #6b0040);
-      box-shadow: 0 4px 8px rgba(107, 0, 64, 0.8);
-      transform: translateY(3px);
-    }
-    #backBtn {
-      background: linear-gradient(135deg, #006fd0, #004da8);
-      box-shadow: 0 8px 15px rgba(0, 77, 168, 0.4);
-    }
-    #backBtn:hover {
-      background: linear-gradient(135deg, #004da8, #003270);
-      box-shadow: 0 12px 20px rgba(0, 50, 112, 0.6);
-    }
-    #backBtn:active {
-      background: linear-gradient(135deg, #003270, #001943);
-      box-shadow: 0 4px 8px rgba(0, 25, 67, 0.8);
-      transform: translateY(3px);
-    }
-    #startBtn {
-      display: none;
-    }
-    #secondContainer {
-      display: none;
-    }
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-    @media (min-width: 768px) {
-      h1 { font-size: 50px; }
-      .text-block {
-        font-size: 28px;
-        min-height: 5em;
-        letter-spacing: 0.02em;
-      }
-    }
-    #second-buttons {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-    }
-    #second-buttons button {
-      width: 220px;
-      padding: 15px 35px;
-      font-size: 1.3rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      user-select: none;
-      outline: none;
-      color: white;
-      background: linear-gradient(135deg, #ff5f7e, #d0006f);
-      box-shadow: 0 8px 15px rgba(208, 0, 111, 0.4);
-      transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
-      animation: float 3s ease-in-out infinite;
-    }
-    #second-buttons button:hover {
-      background: linear-gradient(135deg, #ff3a63, #a8005c);
-      box-shadow: 0 12px 20px rgba(168, 0, 92, 0.6);
-    }
-    #second-buttons button:active {
-      background: linear-gradient(135deg, #a8005c, #6b0040);
-      box-shadow: 0 4px 8px rgba(107, 0, 64, 0.8);
-      transform: translateY(3px);
-    }
-    .nombre {
-      font-family: 'Tangerine', cursive;
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
       font-size: 10vw;
-      margin: 15px 0 30px;
-      background: rgba(255, 255, 255, 0.15);
-      padding: 10px 25px;
-      border: 2px solid #ffe6f0;
-      border-radius: 20px;
-      color: #ffe6f0;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-      display: inline-block;
-      max-width: 90vw;
-      word-wrap: break-word;
-      text-align: center;
-      user-select: none;
+      margin-bottom: 20px;
     }
+
+    p {
+      font-size: 5vw;
+      line-height: 1.5;
+    }
+
     @media (min-width: 768px) {
-      .nombre {
-        font-size: 48px;
+      h1 {
+        font-size: 60px;
+      }
+
+      p {
+        font-size: 24px;
       }
     }
   </style>
-
 </head>
 <body>
+
   <div class="background"></div>
 
-  <h1>Mis 15 Años</h1>
-
-  <!-- Primer bloque -->
-  <div id="firstContainer" class="container">
-    <div class="nombre">Amira Abigail Cibils De La Cruz</div>
-    <div id="typing-text" class="text-block typing"></div>
-    <button id="startBtn">Comenzar</button>
+  <div class="content">
+    <h1>Mis 15 Años</h1>
+    <p>Bienvenidos a mi celebración. Gracias por acompañarme en este día tan especial.</p>
   </div>
 
-  <!-- Segundo bloque -->
-  <div id="secondContainer" class="container">
-    <div id="second-text" class="text-block"></div>
-    <div id="second-buttons">
-      <button id="locationBtn">Ver Ubicación</button>
-      <button id="confirmBtn">Confirmar Asistencia</button>
-      <button id="countdownBtn">Cuenta Regresiva</button>
-    </div>
-    <button id="backBtn">Volver</button>
-  </div>
-
-  <script>
-    const firstText = `Hace 15 años nació una hermosa niña enviada por Dios
-para ser criada y formada por el más grande tesoro.
-
-Hay momentos en la vida que imaginamos, soñamos y esperamos...
-
-Uno de esos momentos ha llegado.`;
-
-    const secondText = `Amira Abigail Cibils De La Cruz
-¡Estás invitado a celebrar conmigo!
-
-📅 Fecha: 05 de Diciembre, 21:00 hs.
-📍 Lugar: Salón Los Sueños, Av. Fiesta 123
-
-¡No faltes!`;
-
-    const typingSpeed = 40;
-
-    const typingElement = document.getElementById('typing-text');
-    const startBtn = document.getElementById('startBtn');
-    const firstContainer = document.getElementById('firstContainer');
-
-    const secondTypingElement = document.getElementById('second-text');
-    const secondContainer = document.getElementById('secondContainer');
-    const backBtn = document.getElementById('backBtn');
-
-    function typeText(element, text, callback) {
-      element.textContent = '';
-      element.classList.add('typing');
-      let i = 0;
-
-      function type() {
-        if (i < text.length) {
-          element.textContent += text.charAt(i);
-          i++;
-          setTimeout(type, typingSpeed);
-        } else {
-          element.classList.remove('typing');
-          if (callback) callback();
-        }
-      }
-      type();
-    }
-
-    window.onload = () => {
-      typeText(typingElement, firstText, () => {
-        startBtn.style.display = 'inline-block';
-      });
-    };
-
-    startBtn.addEventListener('click', () => {
-      // Ocultar primer bloque y nombre
-      firstContainer.style.display = 'none';
-      // Mostrar segundo bloque
-      secondContainer.style.display = 'flex';
-      // Escribir texto segundo bloque
-      typeText(secondTypingElement, secondText);
-    });
-
-    backBtn.addEventListener('click', () => {
-      // Ocultar segundo bloque
-      secondContainer.style.display = 'none';
-      // Mostrar primer bloque
-      firstContainer.style.display = 'flex';
-      // Reiniciar texto primer bloque y reescribir
-      typeText(typingElement, firstText, () => {
-        startBtn.style.display = 'inline-block';
-      });
-      startBtn.style.display = 'none';
-    });
-  </script>
-
-  <audio id="bgMusic" loop autoplay>
-    <source src="musica.mp3" type="audio/mpeg" />
-    Tu navegador no soporta audio HTML5.
-  </audio>
 </body>
 </html>
