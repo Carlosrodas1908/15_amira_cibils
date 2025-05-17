@@ -6,7 +6,7 @@
   <title>Mis 15 Años</title>
 
   <!-- Fuentes elegantes -->
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Allura&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
   <style>
     * {
@@ -22,12 +22,6 @@
       overflow-x: hidden;
       text-align: center;
       color: white;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
       background: #000;
     }
 
@@ -53,22 +47,22 @@
       padding: 20px 30px;
       max-width: 800px;
       width: 90%;
-      margin: 20px auto 0;
+      margin: 40px auto 0;
     }
 
     h1 {
-      font-family: 'Allura', cursive;
+      font-family: 'Great Vibes', cursive;
       font-size: 12vw;
-      color: #fff;
       margin-bottom: 10px;
       opacity: 0;
-      transform: translateY(-30px);
       animation: flyIn 1.2s ease-out forwards;
+      color: #ffdee9;
+      text-shadow: 0 0 10px #ff69b4;
     }
 
     .nombre {
       font-family: 'Allura', cursive;
-      font-size: 8vw;
+      font-size: 9vw;
       color: #ffb6c1;
       opacity: 0;
       animation: fadeInName 2s ease 1.2s forwards, glow 2s ease-in-out infinite alternate;
@@ -117,12 +111,6 @@
       50% { opacity: 0; }
     }
 
-    @media (min-width: 768px) {
-      h1 { font-size: 80px; }
-      .nombre { font-size: 48px; }
-      #typingText { font-size: 24px; }
-    }
-
     .start-button {
       margin-top: 20px;
       background-color: #ff69b4;
@@ -146,6 +134,12 @@
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
+    }
+
+    @media (min-width: 768px) {
+      h1 { font-size: 80px; }
+      .nombre { font-size: 60px; }
+      #typingText { font-size: 24px; }
     }
   </style>
 </head>
