@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mis 15 Años</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Fuentes elegantes -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
   <style>
     * {
@@ -52,11 +53,11 @@
       padding: 20px 30px;
       max-width: 800px;
       width: 90%;
-      margin: 100px auto 0;
+      margin: 20px auto 0;
     }
 
     h1 {
-      font-family: 'Great Vibes', cursive;
+      font-family: 'Dancing Script', cursive;
       font-size: 10vw;
       margin-bottom: 10px;
       opacity: 0;
@@ -65,7 +66,7 @@
     }
 
     .nombre {
-      font-family: 'Great Vibes', cursive;
+      font-family: 'Dancing Script', cursive;
       font-size: 8vw;
       color: #ffb6c1;
       opacity: 0;
@@ -155,14 +156,10 @@
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
 
-    <!-- Botón de inicio -->
     <button class="start-button" id="startBtn">Comenzar celebración</button>
-
-    <!-- Texto oculto hasta hacer clic -->
     <p id="typingText"></p>
   </div>
 
-  <!-- Música de fondo -->
   <audio id="bgMusic" loop>
     <source src="romantica.mp3" type="audio/mpeg" />
     Tu navegador no soporta audio HTML5.
@@ -187,7 +184,6 @@
       startBtn.style.display = "none";
       typingText.style.opacity = 1;
 
-      // Inicia la música
       bgMusic.play().catch(err => {
         console.warn("Autoplay bloqueado por el navegador:", err);
       });
