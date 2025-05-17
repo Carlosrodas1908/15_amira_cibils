@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mis 15 Años</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     * {
       margin: 0;
@@ -17,13 +17,11 @@
       height: 100%;
       width: 100%;
       overflow: hidden;
-      font-family: 'Arial', sans-serif;
-      color: white;
     }
 
     body {
+      font-family: 'Arial', sans-serif;
       position: relative;
-      background: url('abi15.jpg') center/cover no-repeat fixed;
     }
 
     .background {
@@ -45,8 +43,20 @@
       100% { transform: scale(1.15); }
     }
 
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+      margin: 10px;
+    }
+
     h1 {
-      font-family: 'Great Vibes', cursive;
+     font-family: 'Great Vibes', cursive;
       font-size: 9vw;
       color: #fff;
       text-align: center;
@@ -62,107 +72,107 @@
       border-radius: 10px;
     }
 
-    .container {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 20px;
-      margin: 10px auto;
-      max-width: 800px;
+    p {
+      color: #fff;
+      font-size: 4.5vw;
+      margin-bottom: 20px;
       text-align: center;
-      color: white;
-      padding-top: 100px;
     }
 
-    #typing-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 5vw;
-      max-width: 90vw;
-      min-height: 8em;
-      white-space: pre-wrap;
-      border-right: 3px solid white;
-      padding-right: 5px;
-      overflow-wrap: break-word;
-      margin: 0 auto;
-      font-weight: 400;
-      line-height: 1.6;
+    .info {
+      color: #fff;
+      font-size: 4vw;
+      margin-bottom: 20px;
+      text-align: center;
+      line-height: 1.3;
     }
 
-    #startBtn {
-      margin-top: 30px;
-      padding: 12px 25px;
-      font-size: 1.2rem;
-      background-color: white;
-      color: #d0006f;
+    button {
+      width: 90%;
+      max-width: 300px;
+      margin: 8px 0;
+      padding: 12px;
+      font-size: 4vw;
+      border-radius: 12px;
       border: none;
-      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #d0006f;
+      font-weight: bold;
       cursor: pointer;
-      display: none;
-      transition: background 0.3s, color 0.3s;
+      transition: all 0.3s ease;
+      text-align: center;
     }
 
-    #startBtn:hover {
-      background-color: #f1f1f1;
+    button:hover {
+      background-color: #fff;
       color: #a8005c;
     }
 
     @media (min-width: 768px) {
       h1 { font-size: 50px; }
-      #typing-text {
-        font-size: 24px;
-        min-height: 5em;
-      }
+      p, .info { font-size: 20px; }
+      button { font-size: 18px; }
     }
   </style>
 </head>
 <body>
   <div class="background"></div>
 
-  <h1>Mis 15 Años</h1>
-
   <div class="container">
-    <div id="typing-text"></div>
-    <button id="startBtn">Comenzar</button>
+    <h1>Mis 15 Años</h1>
+    <p>¡Estás invitado a celebrar conmigo!</p>
+    <div class="info">
+      📅 <strong>Fecha:</strong> 20 de julio, 6:00 PM<br>
+      📍 <strong>Lugar:</strong> Salón Los Sueños, Av. Fiesta 123
+    </div>
+
+    <button onclick="window.open('https://goo.gl/maps/xxxxxxxxxx', '_blank')">
+      <i class="fas fa-map-marker-alt"></i> Ver en Google Maps
+    </button>
+
+    <button onclick="window.open('https://wa.me/1234567890?text=Confirmo%20mi%20asistencia%20a%20tus%2015%20años!', '_blank')">
+      <i class="fab fa-whatsapp"></i> Confirmar asistencia
+    </button>
+
+    <button onclick="alert('🎉 ¡Faltan 30 días para la fiesta!')">
+      <i class="fas fa-hourglass-half"></i> Cuenta regresiva
+    </button>
+
+    <button onclick="toggleMusic()" id="musicBtn">
+      <i class="fas fa-music"></i> Música
+    </button>
   </div>
 
-  <script>
-    const text = `Hace 15 años nació una hermosa niña enviada por Dios
-para ser criada y formada por el más grande tesoro.
-
-Hay momentos en la vida que imaginamos, soñamos y esperamos...
-
-Uno de esos momentos ha llegado.`;
-
-    const typingElement = document.getElementById('typing-text');
-    const startBtn = document.getElementById('startBtn');
-    let index = 0;
-
-    function type() {
-      if (index < text.length) {
-        typingElement.textContent += text.charAt(index);
-        index++;
-        setTimeout(type, 60);
-      } else {
-        typingElement.style.borderRight = 'none';
-        startBtn.style.display = 'inline-block';
-         startBtn.addEventListener('click', () => {
-    window.location.href = 'inicionew.html';
-  });
-      }
-    }
-
-    window.onload = () => {
-      type();
-    }
-  </script>
-
-  <audio id="bgMusic" loop autoplay>
+  <audio id="bgMusic" loop>
     <source src="musica.mp3" type="audio/mpeg">
     Tu navegador no soporta audio HTML5.
   </audio>
+
+  <script>
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let isPlaying = false;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      music.volume = 0.1;  // volumen bajo para mejorar autoplay
+      music.play().then(() => {
+        isPlaying = true;
+        musicBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar música';
+      }).catch(() => {
+        console.log('🎵 El navegador bloqueó la reproducción automática. Presiona el botón para iniciar.');
+      });
+    });
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        musicBtn.innerHTML = '<i class="fas fa-music"></i> Música';
+      } else {
+        music.play();
+        musicBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar música';
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
 </body>
 </html>
