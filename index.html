@@ -19,16 +19,9 @@
       width: 100%;
       font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
-    }
-
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
       color: white;
       position: relative;
-      padding: 20px;
+      text-align: center;
     }
 
     .background {
@@ -53,11 +46,15 @@
       border-radius: 20px;
       max-width: 800px;
       width: 90%;
+      margin: 20px auto;
+      opacity: 0;
+      transition: opacity 1s ease;
     }
 
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 10vw;
+      margin-top: 15vh;
       margin-bottom: 20px;
       opacity: 0;
       transform: translateY(-30px);
@@ -80,13 +77,8 @@
     }
 
     @media (min-width: 768px) {
-      h1 {
-        font-size: 60px;
-      }
-
-      #typingText {
-        font-size: 24px;
-      }
+      h1 { font-size: 60px; }
+      #typingText { font-size: 24px; }
     }
 
     #typingText::after {
@@ -97,19 +89,47 @@
     @keyframes blink {
       50% { opacity: 0; }
     }
+
+    .start-button {
+      margin-top: 30px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      font-size: 22px;
+      padding: 15px 40px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+      animation: float 2s ease-in-out infinite, fadeInButton 1.8s ease 1.2s forwards;
+      opacity: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes fadeInButton {
+      to { opacity: 1; }
+    }
   </style>
 </head>
 <body>
 
   <div class="background"></div>
 
-  <div class="content">
-    <h1>Mis 15 Años</h1>
+  <h1>Mis 15 Años</h1>
+
+  <button class="start-button" id="startBtn">Comenzar celebración</button>
+
+  <div class="content" id="content">
     <p id="typingText"></p>
   </div>
 
   <!-- 🎵 Música de fondo -->
-  <audio autoplay loop>
+  <audio id="bgMusic" loop>
     <source src="romantica.mp3" type="audio/mpeg" />
     Tu navegador no soporta audio HTML5.
   </audio>
@@ -117,6 +137,9 @@
   <script>
     const message = "Bienvenidos a mi celebración. Gracias por acompañarme en este día tan especial.";
     const typingText = document.getElementById("typingText");
+    const startBtn = document.getElementById("startBtn");
+    const content = document.getElementById("content");
+    const bgMusic = document.getElementById("bgMusic");
     let i = 0;
 
     function typeText() {
@@ -127,9 +150,16 @@
       }
     }
 
-    window.onload = () => {
-      setTimeout(typeText, 1200);
-    };
+    startBtn.addEventListener("click", () => {
+      startBtn.style.display = "none";
+      content.style.opacity = 1;
+
+      bgMusic.play().catch(err => {
+        console.log("Autoplay bloqueado por el navegador:", err);
+      });
+
+      setTimeout(typeText, 400);
+    });
   </script>
 
 </body>
