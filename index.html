@@ -7,7 +7,6 @@
 
   <!-- Fuentes elegantes -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Allura&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-
   <!-- Íconos Font Awesome -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
@@ -23,7 +22,7 @@
       width: 100%;
       font-family: 'Poppins', sans-serif;
       color: white;
-      overflow: hidden; /* 👈 sin scroll */
+      overflow: hidden;
     }
 
     .background {
@@ -187,9 +186,11 @@
       <button class="pretty-button" onclick="window.open('https://maps.google.com/?q=salón+de+fiestas', '_blank')">
         <i class="fas fa-map-marker-alt"></i> Ver ubicación
       </button>
+
       <button class="pretty-button" onclick="confirmarAsistencia()">
         <i class="fab fa-whatsapp"></i> Confirmar asistencia
       </button>
+
       <button class="pretty-button" onclick="alert('Por favor llegar 15 minutos antes. Evento formal.')">
         <i class="fas fa-info-circle"></i> Nota importante
       </button>
@@ -235,8 +236,13 @@
     });
 
     function confirmarAsistencia() {
-      const telefono = '+595992812700';
-      const mensaje = encodeURIComponent('Sí, voy a asistir 💖');
+      const opcion = confirm("¿Vas a asistir?\nPresiona 'Aceptar' para SÍ 💖 o 'Cancelar' para NO 😔");
+
+      const telefono = '598992812700';
+      const mensaje = opcion
+        ? encodeURIComponent('Sí, voy a asistir 💖')
+        : encodeURIComponent('No voy a asistir 😔');
+
       const enlace = `https://wa.me/${telefono}?text=${mensaje}`;
       window.open(enlace, '_blank');
     }
