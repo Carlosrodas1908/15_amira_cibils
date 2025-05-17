@@ -45,7 +45,7 @@
       100% { transform: scale(1.1); }
     }
 
-    .content {
+    .content, .location-section {
       background: rgba(0, 0, 0, 0.5);
       border-radius: 25px;
       margin: 15px;
@@ -57,6 +57,13 @@
       align-items: center;
       text-align: center;
       padding: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .location-section {
+      display: none;
     }
 
     h1 {
@@ -168,7 +175,7 @@
 
   <div class="background"></div>
 
-  <div class="content">
+  <div class="content" id="mainContent">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
 
@@ -183,7 +190,7 @@
     </button>
 
     <div class="extra-buttons" id="extraBtns">
-      <button class="pretty-button" onclick="window.open('https://maps.google.com/?q=salón+de+fiestas', '_blank')">
+      <button class="pretty-button" id="verUbicacion">
         <i class="fas fa-map-marker-alt"></i> Ver ubicación
       </button>
 
@@ -195,6 +202,33 @@
         <i class="fas fa-info-circle"></i> Nota importante
       </button>
     </div>
+  </div>
+
+  <div class="location-section" id="locationSection">
+    <h1>Mis 15 Años</h1>
+    <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
+
+    <div style="margin-top: 20px; font-size: 4.5vw;">
+      <p><strong>📅 Fecha:</strong> 5 de diciembre</p>
+      <p><strong>🕘 Hora:</strong> 21:00 hs</p>
+      <p><strong>📍 Dirección:</strong> Quinta Los Cedrales</p>
+    </div>
+
+    <div style="margin-top: 20px; width: 100%; max-width: 600px;">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.646181933274!2d-56.04185622480608!3d-26.829004476704803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da8ccf7b19db5%3A0x595b6db0d269d330!2sQuinta%20Los%20Cedrales!5e0!3m2!1ses!2spy!4v1715962951431!5m2!1ses!2spy" 
+        width="100%" 
+        height="300" 
+        style="border:0; border-radius: 20px;"
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <button class="pretty-button" style="margin-top: 20px;" onclick="window.open('https://maps.app.goo.gl/tVzjMdPHn13PTntz5', '_blank')">
+      <i class="fas fa-map-marked-alt"></i> Ir a Google Maps
+    </button>
   </div>
 
   <audio id="bgMusic" loop>
@@ -209,6 +243,9 @@
     const continueBtn = document.getElementById("continueBtn");
     const extraBtns = document.getElementById("extraBtns");
     const bgMusic = document.getElementById("bgMusic");
+    const mainContent = document.getElementById("mainContent");
+    const locationSection = document.getElementById("locationSection");
+    const verUbicacionBtn = document.getElementById("verUbicacion");
     let i = 0;
 
     function typeText() {
@@ -235,6 +272,11 @@
       extraBtns.style.display = "flex";
     });
 
+    verUbicacionBtn.addEventListener("click", () => {
+      mainContent.style.display = "none";
+      locationSection.style.display = "flex";
+    });
+
     function confirmarAsistencia() {
       const opcion = confirm("¿Vas a asistir?\nPresiona 'Aceptar' para SÍ 💖 o 'Cancelar' para NO 😔");
 
@@ -247,6 +289,5 @@
       window.open(enlace, '_blank');
     }
   </script>
-
 </body>
 </html>
