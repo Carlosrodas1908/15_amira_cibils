@@ -20,8 +20,11 @@
       width: 100%;
       font-family: 'Arial', sans-serif;
       color: white;
-      overflow: hidden; /* evitar scroll */
       background: url('abi15.jpg') center/cover no-repeat fixed;
+      overflow-y: auto; /* permitir scroll vertical si es necesario */
+      overflow-x: hidden; /* evitar scroll horizontal */
+      margin: 0;
+      padding: 0;
     }
 
     body {
@@ -47,9 +50,7 @@
       100% { transform: scale(1.15); }
     }
 
-  
-
-   h1 {
+    h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 9vw;
       color: #fff;
@@ -81,19 +82,20 @@
     }
 
     .container {
-      min-height: 100vh;
+      max-height: 100vh; /* no más alto que la ventana */
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start; /* contenido desde arriba */
       align-items: center;
-      padding: 25px 15px;
+      padding: 25px 15px 40px;
       background: rgba(0, 0, 0, 0.5);
       border-radius: 20px;
       margin: 10px auto 30px;
       max-width: 480px;
       box-sizing: border-box;
       text-align: center;
-      overflow: hidden; /* evitar scroll interno */
+      overflow-y: auto; /* scroll interno si hace falta */
+      overflow-x: hidden;
     }
 
     .container p {
@@ -138,7 +140,7 @@
     }
 
     @media (min-width: 768px) {
-      header h1 { font-size: 50px; }
+      h1 { font-size: 50px; }
       .nombre { font-size: 48px; max-width: none; }
       .container p { font-size: 28px; }
       .info { font-size: 22px; }
@@ -151,8 +153,8 @@
   <div class="background"></div>
 
   <div class="container">
-   <h1>Mis 15 Años</h1>
-      <div class="nombre">Amira Abigail Cibils De La Cruz</div>
+    <h1>Mis 15 Años</h1>
+    <div class="nombre">Amira Abigail Cibils De La Cruz</div>
     <p>¡Estás invitado a celebrar conmigo!</p>
     <div class="info">
       📅 <strong>Fecha:</strong> 05 de Diciembre, 21:00 hs.<br>
@@ -172,8 +174,6 @@
     </button>
 
   </div>
-
-
 
 </body>
 </html>
