@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mis 15 Años</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Fuentes elegantes y juveniles -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
   <style>
     * {
       margin: 0;
@@ -63,20 +65,21 @@
     }
 
     .container {
-         height: 100vh;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.4);
+      padding: 25px 15px;
+      background: rgba(0, 0, 0, 0.5);
       border-radius: 20px;
       margin: 10px;
+      text-align: center;
     }
 
     #typing-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 5vw;
+      font-family: 'Poppins', sans-serif;
+      font-size: 6vw;
       max-width: 90vw;
       min-height: 8em;
       white-space: pre-wrap;
@@ -86,6 +89,8 @@
       margin: 0 auto;
       font-weight: 400;
       line-height: 1.6;
+      letter-spacing: 0.03em;
+      user-select: none;
     }
 
     #startBtn {
@@ -109,8 +114,9 @@
     @media (min-width: 768px) {
       h1 { font-size: 50px; }
       #typing-text {
-        font-size: 24px;
+        font-size: 28px;
         min-height: 5em;
+        letter-spacing: 0.02em;
       }
     }
   </style>
@@ -145,9 +151,9 @@ Uno de esos momentos ha llegado.`;
       } else {
         typingElement.style.borderRight = 'none';
         startBtn.style.display = 'inline-block';
-         startBtn.addEventListener('click', () => {
-    window.location.href = 'inicionew.html';
-  });
+        startBtn.addEventListener('click', () => {
+          window.location.href = 'inicionew.html';
+        });
       }
     }
 
