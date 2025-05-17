@@ -2,38 +2,23 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mis 15 Años</title>
 
-  <!-- Fuentes elegantes y juveniles -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-
     html, body {
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-      font-family: 'Arial', sans-serif;
+      height: 100%; width: 100%; overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: url('abi15.jpg') center/cover no-repeat fixed;
       color: white;
     }
-
-    body {
-      position: relative;
-      background: url('abi15.jpg') center/cover no-repeat fixed;
-    }
-
     .background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background-image: url('abi15.jpg');
       background-position: center;
       background-size: cover;
@@ -41,12 +26,10 @@
       animation: zoomEffect 5s ease-in-out infinite alternate;
       will-change: transform;
     }
-
     @keyframes zoomEffect {
       0% { transform: scale(1.05); }
       100% { transform: scale(1.15); }
     }
-
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 12vw;
@@ -63,7 +46,6 @@
       padding: 0 15px;
       border-radius: 10px;
     }
-
     .container {
       height: 100vh;
       display: flex;
@@ -76,25 +58,24 @@
       margin: 10px;
       text-align: center;
       position: relative;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    #typing-text, #second-text {
+    .text-block {
       font-family: 'Poppins', sans-serif;
       font-size: 6vw;
       max-width: 90vw;
       min-height: 8em;
       white-space: pre-wrap;
       overflow-wrap: break-word;
-      margin: 0 auto;
       font-weight: 400;
       line-height: 1.6;
       letter-spacing: 0.03em;
       user-select: none;
       position: relative;
     }
-
-    /* Cursor parpadeante al final del texto */
-    #typing-text::after, #second-text::after {
+    .text-block.typing::after {
       content: '';
       display: inline-block;
       width: 3px;
@@ -103,87 +84,58 @@
       margin-left: 5px;
       animation: blink 1s steps(2, start) infinite;
       vertical-align: bottom;
-      visibility: hidden; /* oculto por defecto */
-    }
-
-    /* Mostrar cursor solo mientras se escribe */
-    #typing-text.typing::after {
       visibility: visible;
     }
-
-    #second-text.typing::after {
-      visibility: visible;
-    }
-
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
     }
-
-    #startBtn {
+    button {
       margin-top: 30px;
       padding: 15px 35px;
       font-size: 1.3rem;
       font-weight: 600;
-      background: linear-gradient(135deg, #ff5f7e, #d0006f);
-      color: white;
       border: none;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 8px 15px rgba(208, 0, 111, 0.4);
-      transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
       user-select: none;
       outline: none;
-      display: none; /* oculto inicialmente */
+      transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 15px rgba(208, 0, 111, 0.4);
+      color: white;
+      background: linear-gradient(135deg, #ff5f7e, #d0006f);
     }
-
-    #startBtn:hover {
+    button:hover {
       background: linear-gradient(135deg, #ff3a63, #a8005c);
       box-shadow: 0 12px 20px rgba(168, 0, 92, 0.6);
     }
-
-    #startBtn:active {
+    button:active {
       background: linear-gradient(135deg, #a8005c, #6b0040);
       box-shadow: 0 4px 8px rgba(107, 0, 64, 0.8);
       transform: translateY(3px);
     }
-
-    /* Botón del segundo bloque */
     #backBtn {
-      margin-top: 30px;
-      padding: 15px 35px;
-      font-size: 1.3rem;
-      font-weight: 600;
       background: linear-gradient(135deg, #006fd0, #004da8);
-      color: white;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
       box-shadow: 0 8px 15px rgba(0, 77, 168, 0.4);
-      transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
-      user-select: none;
-      outline: none;
     }
-
     #backBtn:hover {
       background: linear-gradient(135deg, #004da8, #003270);
       box-shadow: 0 12px 20px rgba(0, 50, 112, 0.6);
     }
-
     #backBtn:active {
       background: linear-gradient(135deg, #003270, #001943);
       box-shadow: 0 4px 8px rgba(0, 25, 67, 0.8);
       transform: translateY(3px);
     }
-
-    /* Ocultar el segundo bloque al inicio */
+    #startBtn {
+      display: none;
+    }
     #secondContainer {
       display: none;
     }
-
     @media (min-width: 768px) {
       h1 { font-size: 50px; }
-      #typing-text, #second-text {
+      .text-block {
         font-size: 28px;
         min-height: 5em;
         letter-spacing: 0.02em;
@@ -194,78 +146,95 @@
 <body>
   <div class="background"></div>
 
-  <!-- Primer bloque -->
   <h1>Mis 15 Años</h1>
 
+  <!-- Primer bloque -->
   <div id="firstContainer" class="container">
-    <div id="typing-text" class="typing"></div>
+    <div id="typing-text" class="text-block typing"></div>
     <button id="startBtn">Comenzar</button>
   </div>
 
-  <!-- Segundo bloque (contenido diferente, oculto inicialmente) -->
+  <!-- Segundo bloque -->
   <div id="secondContainer" class="container">
-    <div id="second-text" class="typing"></div>
+    <div id="second-text" class="text-block"></div>
     <button id="backBtn">Volver</button>
   </div>
 
   <script>
-    const text = `Hace 15 años nació una hermosa niña enviada por Dios
+    const firstText = `Hace 15 años nació una hermosa niña enviada por Dios
 para ser criada y formada por el más grande tesoro.
 
 Hay momentos en la vida que imaginamos, soñamos y esperamos...
 
 Uno de esos momentos ha llegado.`;
 
-    const secondTextContent = `Amira Abigail Cibils De La Cruz
+    const secondText = `Amira Abigail Cibils De La Cruz
 ¡Estás invitado a celebrar conmigo!
 
 📅 Fecha: 05 de Diciembre, 21:00 hs.
 📍 Lugar: Salón Los Sueños, Av. Fiesta 123
 
-Ver en Google Maps
-Confirmar asistencia
-Cuenta regresiva`;
+¡No faltes!`;
+
+    const typingSpeed = 40;
 
     const typingElement = document.getElementById('typing-text');
-    const secondTypingElement = document.getElementById('second-text');
     const startBtn = document.getElementById('startBtn');
-    const backBtn = document.getElementById('backBtn');
+    const firstContainer = document.getElementById('firstContainer');
 
-    let index = 0;
-    let secondIndex = 0;
+    const secondTypingElement = document.getElementById('second-text');
+    const secondContainer = document.getElementById('secondContainer');
+    const backBtn = document.getElementById('backBtn');
 
     function typeText(element, text, callback) {
       element.textContent = '';
       element.classList.add('typing');
       let i = 0;
 
-      function typing() {
+      function type() {
         if (i < text.length) {
           element.textContent += text.charAt(i);
           i++;
-          setTimeout(typing, 40);
+          setTimeout(type, typingSpeed);
         } else {
           element.classList.remove('typing');
           if (callback) callback();
         }
       }
-      typing();
+      type();
     }
 
-    // Iniciar tipeo primer bloque
     window.onload = () => {
-      typeText(typingElement, text, () => {
+      typeText(typingElement, firstText, () => {
         startBtn.style.display = 'inline-block';
       });
     };
 
-    // Cuando click en Comenzar, ocultar primer bloque y mostrar segundo
     startBtn.addEventListener('click', () => {
-      document.getElementById('firstContainer').style.display = 'none';
-      document.getElementById('secondContainer').style.display = 'flex';
-      typeText(secondTypingElement, secondTextContent);
+      // Ocultar primer bloque
+      firstContainer.style.display = 'none';
+      // Mostrar segundo bloque
+      secondContainer.style.display = 'flex';
+      // Escribir texto segundo bloque
+      typeText(secondTypingElement, secondText);
     });
 
-    // Botón volver para regresar al primer bloque
     backBtn.addEventListener('click', () => {
-      document.getElementById('secondContainer').style.display
+      // Ocultar segundo bloque
+      secondContainer.style.display = 'none';
+      // Mostrar primer bloque
+      firstContainer.style.display = 'flex';
+      // Reiniciar texto primer bloque y reescribir
+      typeText(typingElement, firstText, () => {
+        startBtn.style.display = 'inline-block';
+      });
+      startBtn.style.display = 'none';
+    });
+  </script>
+
+  <audio id="bgMusic" loop autoplay>
+    <source src="musica.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio HTML5.
+  </audio>
+</body>
+</html>
