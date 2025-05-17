@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mis 15 Años</title>
-  
+
   <!-- Fuentes elegantes -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Tangerine:wght@700&display=swap" rel="stylesheet" />
-  
+
   <style>
     * {
       margin: 0;
@@ -18,9 +18,9 @@
     html, body {
       height: 100%;
       width: 100%;
-      overflow: hidden;
       font-family: 'Arial', sans-serif;
       color: white;
+      overflow-x: hidden;
     }
 
     body {
@@ -39,7 +39,6 @@
       background-size: cover;
       z-index: -1;
       animation: zoomEffect 5s ease-in-out infinite alternate;
-      will-change: transform;
     }
 
     @keyframes zoomEffect {
@@ -47,68 +46,61 @@
       100% { transform: scale(1.15); }
     }
 
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 9vw;
-      color: #fff;
+    header {
       text-align: center;
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      z-index: 10;
-      user-select: none;
-      background: rgba(0,0,0,0.1);
-      padding: 0 15px;
-      border-radius: 10px;
+      padding: 40px 20px 10px;
+    }
+
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 10vw;
+      background: rgba(0, 0, 0, 0.3);
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 12px;
     }
 
     .nombre {
       font-family: 'Tangerine', cursive;
-      font-size: 6vw;
-      color: #ffe6f0;
-      text-align: center;
-      position: fixed;
-      top: 90px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 9;
+      font-size: 11vw;
+      margin-top: 10px;
       background: rgba(255, 255, 255, 0.15);
       padding: 10px 25px;
       border: 2px solid #ffe6f0;
       border-radius: 20px;
+      color: #ffe6f0;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-    }
-
-    @media (min-width: 768px) {
-      h1 { font-size: 50px; }
-      .nombre { font-size: 36px; }
+      display: inline-block;
     }
 
     .container {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
+      margin: 0 auto;
+      margin-top: 30px;
       background: rgba(0, 0, 0, 0.6);
       border-radius: 20px;
-      margin: 10px auto;
-      max-width: 800px;
+      padding: 30px 20px;
+      max-width: 600px;
       text-align: center;
-      color: white;
-      padding-top: 140px;
+    }
+
+    .container p {
+      font-size: 5vw;
+      margin-bottom: 15px;
+    }
+
+    .info {
+      font-size: 4.5vw;
+      margin-bottom: 20px;
+      line-height: 1.6;
     }
 
     button {
-      width: 90%;
+      width: 100%;
       max-width: 300px;
-      margin: 8px 0;
-      padding: 12px;
-      font-size: 4vw;
+      margin: 10px auto;
+      padding: 14px;
+      font-size: 4.5vw;
       border-radius: 12px;
       border: none;
       background-color: rgba(255, 255, 255, 0.9);
@@ -116,7 +108,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s ease;
-      text-align: center;
+      display: block;
     }
 
     button:hover {
@@ -125,15 +117,22 @@
     }
 
     @media (min-width: 768px) {
+      header h1 { font-size: 60px; }
+      .nombre { font-size: 48px; }
+      .container p { font-size: 24px; }
+      .info { font-size: 18px; }
       button { font-size: 18px; }
     }
   </style>
 </head>
 <body>
+
   <div class="background"></div>
 
-  <h1>Mis 15 Años</h1>
-  <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
+  <header>
+    <h1>Mis 15 Años</h1><br>
+    <div class="nombre">Amira Abigail Cibils De La Cruz</div>
+  </header>
 
   <div class="container">
     <p>¡Estás invitado a celebrar conmigo!</p>
@@ -167,12 +166,9 @@
   <script>
     function toggleMusic() {
       const music = document.getElementById("bgMusic");
-      if (music.paused) {
-        music.play();
-      } else {
-        music.pause();
-      }
+      music.paused ? music.play() : music.pause();
     }
   </script>
+
 </body>
 </html>
