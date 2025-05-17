@@ -25,13 +25,18 @@
       background: #000;
     }
 
+    /* Fondo fijo que cubre toda la pantalla y se adapta */
     .background {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: url('abi15.jpg') center/cover no-repeat;
+      background-image: url('abi15.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
       z-index: -1;
       animation: zoom 10s ease-in-out infinite alternate;
     }
