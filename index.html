@@ -37,7 +37,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: url('abi150.jpg') center/cover no-repeat;
+      background: url('abi15.jpg') center/cover no-repeat;
       z-index: -1;
       animation: zoom 10s ease-in-out infinite alternate;
     }
@@ -108,6 +108,12 @@
     <p id="typingText"></p>
   </div>
 
+  <!-- 🎵 Música de fondo -->
+  <audio autoplay loop>
+    <source src="romantica.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
   <script>
     const message = "Bienvenidos a mi celebración. Gracias por acompañarme en este día tan especial.";
     const typingText = document.getElementById("typingText");
@@ -117,12 +123,12 @@
       if (i < message.length) {
         typingText.textContent += message.charAt(i);
         i++;
-        setTimeout(typeText, 40); // velocidad del tipeo
+        setTimeout(typeText, 40);
       }
     }
 
     window.onload = () => {
-      setTimeout(typeText, 1200); // esperar a que h1 termine la animación
+      setTimeout(typeText, 1200);
     };
   </script>
 
