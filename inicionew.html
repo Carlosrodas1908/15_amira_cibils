@@ -47,12 +47,9 @@
       100% { transform: scale(1.15); }
     }
 
-    header {
-      text-align: center;
-      padding: 40px 20px 10px;
-    }
+  
 
-    header h1 {
+   h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 9vw;
       color: #fff;
@@ -154,10 +151,8 @@
   <div class="background"></div>
 
   <div class="container">
-    <header>
-      <h1>Mis 15 Años</h1>
+   <h1>Mis 15 Años</h1>
       <div class="nombre">Amira Abigail Cibils De La Cruz</div>
-    </header>
     <p>¡Estás invitado a celebrar conmigo!</p>
     <div class="info">
       📅 <strong>Fecha:</strong> 05 de Diciembre, 21:00 hs.<br>
@@ -176,22 +171,9 @@
       Cuenta regresiva
     </button>
 
-    <button onclick="toggleMusic()" id="musicBtn">
-      Música
-    </button>
   </div>
 
-  <audio id="bgMusic" loop autoplay>
-    <source src="musica.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio HTML5.
-  </audio>
 
-  <script>
-    function toggleMusic() {
-      const music = document.getElementById("bgMusic");
-      music.paused ? music.play() : music.pause();
-    }
-  </script>
 
 </body>
 </html>
