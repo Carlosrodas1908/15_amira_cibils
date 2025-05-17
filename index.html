@@ -32,11 +32,13 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-image: url('abi150.jpg');
+      /* Imagen pública para prueba */
+      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      background-attachment: fixed;
+      /* background-attachment fijo puede fallar en móviles, mejor quitar */
+      /* background-attachment: fixed; */
       z-index: -1;
       animation: zoom 10s ease-in-out infinite alternate;
     }
