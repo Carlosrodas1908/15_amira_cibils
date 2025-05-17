@@ -2,12 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Mis 15 Años</title>
 
-  <!-- Fuentes elegantes y juveniles -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Fuentes elegantes -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&family=Tangerine:wght@700&display=swap" rel="stylesheet" />
 
   <style>
     * {
@@ -19,22 +18,23 @@
     html, body {
       height: 100%;
       width: 100%;
-      overflow: hidden;
       font-family: 'Arial', sans-serif;
       color: white;
+      background: url('abi15.jpg') center/cover no-repeat fixed;
+      overflow-y: auto;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       position: relative;
-      background: url('abi15.jpg') center/cover no-repeat fixed;
     }
 
     .background {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-image: url('abi15.jpg');
       background-position: center;
       background-size: cover;
@@ -50,34 +50,39 @@
 
     h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 12vw;
       color: #fff;
       text-align: center;
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
       white-space: nowrap;
-      z-index: 10;
       user-select: none;
       background: rgba(0,0,0,0.1);
       padding: 0 15px;
       border-radius: 10px;
+      margin-bottom: 15px;
+      display: inline-block;
     }
 
-    .container {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 25px 15px;
+    /* CONTENEDORES DE SECCIONES */
+    #introSection, #invitationSection {
+      max-width: 480px;
+      margin: 30px auto;
       background: rgba(0, 0, 0, 0.5);
       border-radius: 20px;
-      margin: 10px;
+      padding: 25px 15px 40px;
+      box-sizing: border-box;
       text-align: center;
+      min-height: 60vh;
+      display: none; /* Ocultas ambas por defecto */
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
+    /* MOSTRAR SOLO INTRO AL CARGAR */
+    #introSection.active, #invitationSection.active {
+      display: flex;
+    }
+
+    /* Texto tipeado intro */
     #typing-text {
       font-family: 'Poppins', sans-serif;
       font-size: 6vw;
@@ -85,15 +90,15 @@
       min-height: 8em;
       white-space: pre-wrap;
       overflow-wrap: break-word;
-      margin: 0 auto;
+      margin: 0 auto 25px;
       font-weight: 400;
       line-height: 1.6;
       letter-spacing: 0.03em;
       user-select: none;
       position: relative;
+      color: white;
     }
 
-    /* Cursor parpadeante al final del texto */
     #typing-text::after {
       content: '';
       display: inline-block;
@@ -103,10 +108,9 @@
       margin-left: 5px;
       animation: blink 1s steps(2, start) infinite;
       vertical-align: bottom;
-      visibility: hidden; /* oculto por defecto */
+      visibility: hidden;
     }
 
-    /* Mostrar cursor solo mientras se escribe */
     #typing-text.typing::after {
       visibility: visible;
     }
@@ -117,7 +121,6 @@
     }
 
     #startBtn {
-      margin-top: 30px;
       padding: 15px 35px;
       font-size: 1.3rem;
       font-weight: 600;
@@ -130,7 +133,8 @@
       transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
       user-select: none;
       outline: none;
-      display: none; /* oculto inicialmente */
+      display: inline-block;
+      margin: 0 auto;
     }
 
     #startBtn:hover {
@@ -144,24 +148,136 @@
       transform: translateY(3px);
     }
 
+    /* Invitación estilos */
+
+    #invitationSection h1 {
+      font-size: 9vw;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .nombre {
+      font-family: 'Tangerine', cursive;
+      font-size: 10vw;
+      margin-top: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 10px 25px;
+      border: 2px solid #ffe6f0;
+      border-radius: 20px;
+      color: #ffe6f0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+      display: inline-block;
+      max-width: 90vw;
+      word-wrap: break-word;
+      margin-bottom: 15px;
+    }
+
+    #invitationSection p {
+      font-size: 5vw;
+      margin-bottom: 15px;
+    }
+
+    .info {
+      font-size: 4.5vw;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    #invitationSection button {
+      width: 90%;
+      max-width: 300px;
+      margin: 10px auto;
+      padding: 14px;
+      font-size: 5vw;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #ff5f7e, #d0006f);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(208, 0, 111, 0.4);
+      transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+      display: block;
+      user-select: none;
+      outline: none;
+    }
+
+    #invitationSection button:hover {
+      background: linear-gradient(135deg, #ff3a63, #a8005c);
+      box-shadow: 0 12px 20px rgba(168, 0, 92, 0.6);
+    }
+
+    #invitationSection button:active {
+      background: linear-gradient(135deg, #a8005c, #6b0040);
+      box-shadow: 0 4px 8px rgba(107, 0, 64, 0.8);
+      transform: translateY(3px);
+    }
+
+    /* Responsive */
     @media (min-width: 768px) {
-      h1 { font-size: 50px; }
-      #typing-text {
+      #introSection #typing-text {
         font-size: 28px;
         min-height: 5em;
         letter-spacing: 0.02em;
+      }
+
+      #invitationSection h1 {
+        font-size: 50px;
+      }
+
+      .nombre {
+        font-size: 48px;
+        max-width: none;
+      }
+
+      #invitationSection p {
+        font-size: 28px;
+      }
+
+      .info {
+        font-size: 22px;
+      }
+
+      #invitationSection button {
+        font-size: 18px;
+        width: 300px;
       }
     }
   </style>
 </head>
 <body>
+
   <div class="background"></div>
 
-  <h1>Mis 15 Años</h1>
-
-  <div class="container">
+  <!-- INTRO: texto tipeado y botón -->
+  <div id="introSection" class="active">
+    <h1>Mis 15 Años</h1>
     <div id="typing-text" class="typing"></div>
     <button id="startBtn">Comenzar</button>
+  </div>
+
+  <!-- INVITACIÓN -->
+  <div id="invitationSection">
+    <h1>Mis 15 Años</h1>
+    <div class="nombre">Amira Abigail Cibils De La Cruz</div>
+    <p>¡Estás invitado a celebrar conmigo!</p>
+    <div class="info">
+      📅 <strong>Fecha:</strong> 05 de Diciembre, 21:00 hs.<br>
+      📍 <strong>Lugar:</strong> Salón Los Sueños, Av. Fiesta 123
+    </div>
+
+    <button onclick="window.open('https://goo.gl/maps/xxxxxxxxxx', '_blank')">
+      Ver en Google Maps
+    </button>
+
+    <button onclick="window.open('https://wa.me/1234567890?text=Confirmo%20mi%20asistencia%20a%20tus%2015%20años!', '_blank')">
+      Confirmar asistencia
+    </button>
+
+    <button onclick="alert('🎉 ¡Faltan 30 días para la fiesta!')">
+      Cuenta regresiva
+    </button>
   </div>
 
   <script>
@@ -174,6 +290,8 @@ Uno de esos momentos ha llegado.`;
 
     const typingElement = document.getElementById('typing-text');
     const startBtn = document.getElementById('startBtn');
+    const introSection = document.getElementById('introSection');
+    const invitationSection = document.getElementById('invitationSection');
     let index = 0;
 
     function type() {
@@ -182,22 +300,22 @@ Uno de esos momentos ha llegado.`;
         index++;
         setTimeout(type, 60);
       } else {
-        typingElement.classList.remove('typing'); // quita cursor
-        startBtn.style.display = 'inline-block'; // muestra botón
-        startBtn.addEventListener('click', () => {
-          window.location.href = 'inicionew.html';
-        });
-      }
-    }
+        typingElement.classList.remove
+('typing'); // quitar cursor parpadeante cuando termina
+}
+}
+startBtn.addEventListener('click', () => {
+  // Ocultar intro, mostrar invitación
+  introSection.classList.remove('active');
+  invitationSection.classList.add('active');
+  // Para que el scroll esté al inicio en invitación:
+  window.scrollTo(0,0);
+});
 
-    window.onload = () => {
-      type();
-    }
-  </script>
-
-  <audio id="bgMusic" loop autoplay>
-    <source src="musica.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio HTML5.
-  </audio>
+// Iniciar tipeo al cargar
+window.addEventListener('DOMContentLoaded', () => {
+  type();
+});
+</script> 
 </body>
-</html>
+ </html> 
