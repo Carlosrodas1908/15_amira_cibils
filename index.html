@@ -49,7 +49,7 @@
 
     h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 9vw;
+      font-size: 12vw;
       color: #fff;
       text-align: center;
       position: fixed;
@@ -83,32 +83,64 @@
       max-width: 90vw;
       min-height: 8em;
       white-space: pre-wrap;
-      border-right: 3px solid white;
-      padding-right: 5px;
       overflow-wrap: break-word;
       margin: 0 auto;
       font-weight: 400;
       line-height: 1.6;
       letter-spacing: 0.03em;
       user-select: none;
+      position: relative;
+    }
+
+    /* Cursor parpadeante al final del texto */
+    #typing-text::after {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 1.2em;
+      background-color: white;
+      margin-left: 5px;
+      animation: blink 1s steps(2, start) infinite;
+      vertical-align: bottom;
+      visibility: hidden; /* oculto por defecto */
+    }
+
+    /* Mostrar cursor solo mientras se escribe */
+    #typing-text.typing::after {
+      visibility: visible;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
 
     #startBtn {
       margin-top: 30px;
-      padding: 12px 25px;
-      font-size: 1.2rem;
-      background-color: white;
-      color: #d0006f;
+      padding: 15px 35px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #ff5f7e, #d0006f);
+      color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 30px;
       cursor: pointer;
-      display: none;
-      transition: background 0.3s, color 0.3s;
+      box-shadow: 0 8px 15px rgba(208, 0, 111, 0.4);
+      transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+      user-select: none;
+      outline: none;
+      display: none; /* oculto inicialmente */
     }
 
     #startBtn:hover {
-      background-color: #f1f1f1;
-      color: #a8005c;
+      background: linear-gradient(135deg, #ff3a63, #a8005c);
+      box-shadow: 0 12px 20px rgba(168, 0, 92, 0.6);
+    }
+
+    #startBtn:active {
+      background: linear-gradient(135deg, #a8005c, #6b0040);
+      box-shadow: 0 4px 8px rgba(107, 0, 64, 0.8);
+      transform: translateY(3px);
     }
 
     @media (min-width: 768px) {
@@ -127,7 +159,7 @@
   <h1>Mis 15 Años</h1>
 
   <div class="container">
-    <div id="typing-text"></div>
+    <div id="typing-text" class="typing"></div>
     <button id="startBtn">Comenzar</button>
   </div>
 
@@ -149,8 +181,8 @@ Uno de esos momentos ha llegado.`;
         index++;
         setTimeout(type, 60);
       } else {
-        typingElement.style.borderRight = 'none';
-        startBtn.style.display = 'inline-block';
+        typingElement.classList.remove('typing'); // quita cursor
+        startBtn.style.display = 'inline-block'; // muestra botón
         startBtn.addEventListener('click', () => {
           window.location.href = 'inicionew.html';
         });
