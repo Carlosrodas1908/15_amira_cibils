@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Mis 15 Años</title>
 
   <!-- Fuentes elegantes -->
@@ -34,8 +34,6 @@
       background-image: url('abi15.jpg');
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
       z-index: -1;
       animation: zoom 20s ease-in-out infinite alternate;
     }
@@ -46,30 +44,42 @@
     }
 
     .content, .location-section {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0, 0, 0, 0.5);
-      border-radius: 25px;
-      margin: 15px;
-      width: calc(100% - 30px);
-      height: calc(100% - 30px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       padding: 20px;
-      position: absolute;
-      top: 0;
-      left: 0;
+      border-radius: 25px;
     }
 
     .location-section {
       display: none;
+      justify-content: flex-start;
+      overflow: hidden;
+    }
+
+    .location-section iframe {
+      width: 90%;
+      height: 200px;
+      border: 0;
+      border-radius: 20px;
+    }
+
+    .location-section p {
+      font-size: 4vw;
+      margin: 5px 0;
     }
 
     h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 12vw;
-      margin-bottom: 10px;
+      font-size: 10vw;
       color: #ffdee9;
       text-shadow: 0 0 10px #ff69b4;
       opacity: 0;
@@ -78,9 +88,9 @@
 
     .nombre {
       font-family: 'Allura', cursive;
-      font-size: 8vw;
+      font-size: 7vw;
       color: #ffb6c1;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       opacity: 0;
       animation: fadeInName 2s ease 1.2s forwards, glow 2s ease-in-out infinite alternate;
     }
@@ -116,12 +126,12 @@
     }
 
     .pretty-button {
-      margin-top: 15px;
+      margin-top: 10px;
       background: linear-gradient(135deg, #ff69b4, #ffb6c1);
       color: white;
       border: none;
       font-size: 4.5vw;
-      padding: 14px 30px;
+      padding: 12px 25px;
       border-radius: 40px;
       cursor: pointer;
       font-weight: bold;
@@ -136,20 +146,19 @@
 
     .pretty-button:hover {
       background: linear-gradient(135deg, #ff85c1, #ffc1d6);
-      box-shadow: 0 6px 25px rgba(255, 105, 180, 0.8);
       transform: scale(1.05);
     }
 
-    .continue-button {
+    .continue-button, .extra-buttons {
       display: none;
     }
 
     .extra-buttons {
-      display: none;
       flex-direction: column;
-      gap: 15px;
-      margin-top: 20px;
+      gap: 10px;
+      margin-top: 10px;
       width: 100%;
+      align-items: center;
     }
 
     @keyframes float {
@@ -168,70 +177,39 @@
       .nombre { font-size: 60px; }
       #typingText { font-size: 24px; }
       .pretty-button { font-size: 20px; padding: 15px 40px; }
+      .location-section p { font-size: 18px; }
     }
   </style>
 </head>
 <body>
-
   <div class="background"></div>
 
   <div class="content" id="mainContent">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
-
-    <button class="pretty-button" id="startBtn">
-      <i class="fas fa-play"></i> Comenzar celebración
-    </button>
-
+    <button class="pretty-button" id="startBtn"><i class="fas fa-play"></i> Comenzar celebración</button>
     <p id="typingText"></p>
-
-    <button class="pretty-button continue-button" id="continueBtn">
-      <i class="fas fa-arrow-right"></i> Continuar
-    </button>
-
+    <button class="pretty-button continue-button" id="continueBtn"><i class="fas fa-arrow-right"></i> Continuar</button>
     <div class="extra-buttons" id="extraBtns">
-      <button class="pretty-button" id="verUbicacion">
-        <i class="fas fa-map-marker-alt"></i> Ver ubicación
-      </button>
-
-      <button class="pretty-button" onclick="confirmarAsistencia()">
-        <i class="fab fa-whatsapp"></i> Confirmar asistencia
-      </button>
-
-      <button class="pretty-button" onclick="alert('Por favor llegar 15 minutos antes. Evento formal.')">
-        <i class="fas fa-info-circle"></i> Nota importante
-      </button>
+      <button class="pretty-button" id="verUbicacion"><i class="fas fa-map-marker-alt"></i> Ver ubicación</button>
+      <button class="pretty-button" onclick="confirmarAsistencia()"><i class="fab fa-whatsapp"></i> Confirmar asistencia</button>
+      <button class="pretty-button" onclick="alert('Por favor llegar 15 minutos antes. Evento formal.')"><i class="fas fa-info-circle"></i> Nota importante</button>
     </div>
   </div>
 
   <div class="location-section" id="locationSection">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
-
-    <div style="margin-top: 20px; font-size: 4.5vw;">
-      <p><strong>📅 Fecha:</strong> 5 de diciembre</p>
+    <div style="margin-top: 10px;">
+      <p><strong>🗓 Fecha:</strong> 5 de diciembre</p>
       <p><strong>🕘 Hora:</strong> 21:00 hs</p>
       <p><strong>📍 Dirección:</strong> Quinta Los Cedrales</p>
     </div>
-
-    <div style="margin-top: 20px; width: 100%; max-width: 600px;">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.646181933274!2d-56.04185622480608!3d-26.829004476704803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da8ccf7b19db5%3A0x595b6db0d269d330!2sQuinta%20Los%20Cedrales!5e0!3m2!1ses!2spy!4v1715962951431!5m2!1ses!2spy" 
-        width="100%" 
-        height="300" 
-        style="border:0; border-radius: 20px;"
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-
-    <button class="pretty-button" style="margin-top: 20px;" onclick="window.open('https://maps.app.goo.gl/tVzjMdPHn13PTntz5', '_blank')">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.646181933274!2d-56.04185622480608!3d-26.829004476704803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da8ccf7b19db5%3A0x595b6db0d269d330!2sQuinta%20Los%20Cedrales!5e0!3m2!1ses!2spy!4v1715962951431!5m2!1ses!2spy" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <button class="pretty-button" style="margin-top: 10px;" onclick="window.open('https://maps.app.goo.gl/tVzjMdPHn13PTntz5', '_blank')">
       <i class="fas fa-map-marked-alt"></i> Ir a Google Maps
     </button>
-
-    <!-- Botón de retroceso -->
-    <button class="pretty-button" style="margin-top: 15px;" onclick="volverAExtras()">
+    <button class="pretty-button" style="margin-top: 10px;" onclick="volverAExtras()">
       <i class="fas fa-arrow-left"></i> Volver
     </button>
   </div>
@@ -289,12 +267,8 @@
 
     function confirmarAsistencia() {
       const opcion = confirm("¿Vas a asistir?\nPresiona 'Aceptar' para SÍ 💖 o 'Cancelar' para NO 😔");
-
       const telefono = '+595992812700';
-      const mensaje = opcion
-        ? encodeURIComponent('Sí, voy a asistir 💖')
-        : encodeURIComponent('No voy a asistir 😔');
-
+      const mensaje = opcion ? encodeURIComponent('Sí, voy a asistir 💖') : encodeURIComponent('No voy a asistir 😔');
       const enlace = `https://wa.me/${telefono}?text=${mensaje}`;
       window.open(enlace, '_blank');
     }
