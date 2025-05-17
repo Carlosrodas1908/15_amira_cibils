@@ -19,9 +19,17 @@
       width: 100%;
       font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
-      color: white;
-      position: relative;
       text-align: center;
+      color: white;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      position: relative;
     }
 
     .background {
@@ -41,20 +49,17 @@
     }
 
     .content {
-      padding: 20px 30px;
       background: rgba(0, 0, 0, 0.5);
       border-radius: 20px;
+      padding: 20px 30px;
       max-width: 800px;
       width: 90%;
-      margin: 20px auto;
-      opacity: 0;
-      transition: opacity 1s ease;
+      margin-top: 20px;
     }
 
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 10vw;
-      margin-top: 15vh;
       margin-bottom: 20px;
       opacity: 0;
       transform: translateY(-30px);
@@ -74,11 +79,8 @@
       white-space: pre-wrap;
       min-height: 3em;
       text-align: center;
-    }
-
-    @media (min-width: 768px) {
-      h1 { font-size: 60px; }
-      #typingText { font-size: 24px; }
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
     }
 
     #typingText::after {
@@ -90,8 +92,13 @@
       50% { opacity: 0; }
     }
 
+    @media (min-width: 768px) {
+      h1 { font-size: 60px; }
+      #typingText { font-size: 24px; }
+    }
+
     .start-button {
-      margin-top: 30px;
+      margin-top: 20px;
       background-color: #ff69b4;
       color: white;
       border: none;
@@ -101,8 +108,7 @@
       cursor: pointer;
       font-weight: bold;
       box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
-      animation: float 2s ease-in-out infinite, fadeInButton 1.8s ease 1.2s forwards;
-      opacity: 0;
+      animation: float 2s ease-in-out infinite, fadeIn 2s ease forwards;
     }
 
     @keyframes float {
@@ -111,7 +117,8 @@
       100% { transform: translateY(0); }
     }
 
-    @keyframes fadeInButton {
+    @keyframes fadeIn {
+      from { opacity: 0; }
       to { opacity: 1; }
     }
   </style>
@@ -120,15 +127,17 @@
 
   <div class="background"></div>
 
-  <h1>Mis 15 Años</h1>
+  <div class="content">
+    <h1>Mis 15 Años</h1>
 
-  <button class="start-button" id="startBtn">Comenzar celebración</button>
+    <!-- Botón de inicio -->
+    <button class="start-button" id="startBtn">Comenzar celebración</button>
 
-  <div class="content" id="content">
+    <!-- Texto oculto hasta hacer clic -->
     <p id="typingText"></p>
   </div>
 
-  <!-- 🎵 Música de fondo -->
+  <!-- Música de fondo -->
   <audio id="bgMusic" loop>
     <source src="romantica.mp3" type="audio/mpeg" />
     Tu navegador no soporta audio HTML5.
@@ -138,7 +147,6 @@
     const message = "Bienvenidos a mi celebración. Gracias por acompañarme en este día tan especial.";
     const typingText = document.getElementById("typingText");
     const startBtn = document.getElementById("startBtn");
-    const content = document.getElementById("content");
     const bgMusic = document.getElementById("bgMusic");
     let i = 0;
 
@@ -151,11 +159,12 @@
     }
 
     startBtn.addEventListener("click", () => {
-      startBtn.style.display = "none";
-      content.style.opacity = 1;
+      startBtn.style.display = "none";        // Oculta el botón
+      typingText.style.opacity = 1;           // Muestra el texto
 
+      // Inicia la música
       bgMusic.play().catch(err => {
-        console.log("Autoplay bloqueado por el navegador:", err);
+        console.warn("Autoplay bloqueado por el navegador:", err);
       });
 
       setTimeout(typeText, 400);
