@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Mis 15 Años</title>
 
   <!-- Fuentes elegantes y juveniles -->
@@ -76,9 +75,10 @@
       border-radius: 20px;
       margin: 10px;
       text-align: center;
+      position: relative;
     }
 
-    #typing-text {
+    #typing-text, #second-text {
       font-family: 'Poppins', sans-serif;
       font-size: 6vw;
       max-width: 90vw;
@@ -94,7 +94,7 @@
     }
 
     /* Cursor parpadeante al final del texto */
-    #typing-text::after {
+    #typing-text::after, #second-text::after {
       content: '';
       display: inline-block;
       width: 3px;
@@ -108,6 +108,10 @@
 
     /* Mostrar cursor solo mientras se escribe */
     #typing-text.typing::after {
+      visibility: visible;
+    }
+
+    #second-text.typing::after {
       visibility: visible;
     }
 
@@ -144,9 +148,42 @@
       transform: translateY(3px);
     }
 
+    /* Botón del segundo bloque */
+    #backBtn {
+      margin-top: 30px;
+      padding: 15px 35px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #006fd0, #004da8);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(0, 77, 168, 0.4);
+      transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+      user-select: none;
+      outline: none;
+    }
+
+    #backBtn:hover {
+      background: linear-gradient(135deg, #004da8, #003270);
+      box-shadow: 0 12px 20px rgba(0, 50, 112, 0.6);
+    }
+
+    #backBtn:active {
+      background: linear-gradient(135deg, #003270, #001943);
+      box-shadow: 0 4px 8px rgba(0, 25, 67, 0.8);
+      transform: translateY(3px);
+    }
+
+    /* Ocultar el segundo bloque al inicio */
+    #secondContainer {
+      display: none;
+    }
+
     @media (min-width: 768px) {
       h1 { font-size: 50px; }
-      #typing-text {
+      #typing-text, #second-text {
         font-size: 28px;
         min-height: 5em;
         letter-spacing: 0.02em;
@@ -157,11 +194,18 @@
 <body>
   <div class="background"></div>
 
+  <!-- Primer bloque -->
   <h1>Mis 15 Años</h1>
 
-  <div class="container">
+  <div id="firstContainer" class="container">
     <div id="typing-text" class="typing"></div>
     <button id="startBtn">Comenzar</button>
+  </div>
+
+  <!-- Segundo bloque (contenido diferente, oculto inicialmente) -->
+  <div id="secondContainer" class="container">
+    <div id="second-text" class="typing"></div>
+    <button id="backBtn">Volver</button>
   </div>
 
   <script>
@@ -172,32 +216,56 @@ Hay momentos en la vida que imaginamos, soñamos y esperamos...
 
 Uno de esos momentos ha llegado.`;
 
+    const secondTextContent = `Amira Abigail Cibils De La Cruz
+¡Estás invitado a celebrar conmigo!
+
+📅 Fecha: 05 de Diciembre, 21:00 hs.
+📍 Lugar: Salón Los Sueños, Av. Fiesta 123
+
+Ver en Google Maps
+Confirmar asistencia
+Cuenta regresiva`;
+
     const typingElement = document.getElementById('typing-text');
+    const secondTypingElement = document.getElementById('second-text');
     const startBtn = document.getElementById('startBtn');
+    const backBtn = document.getElementById('backBtn');
+
     let index = 0;
+    let secondIndex = 0;
 
-    function type() {
-      if (index < text.length) {
-        typingElement.textContent += text.charAt(index);
-        index++;
-        setTimeout(type, 60);
-      } else {
-        typingElement.classList.remove('typing'); // quita cursor
-        startBtn.style.display = 'inline-block'; // muestra botón
-        startBtn.addEventListener('click', () => {
-          window.location.href = 'inicionew.html';
-        });
+    function typeText(element, text, callback) {
+      element.textContent = '';
+      element.classList.add('typing');
+      let i = 0;
+
+      function typing() {
+        if (i < text.length) {
+          element.textContent += text.charAt(i);
+          i++;
+          setTimeout(typing, 40);
+        } else {
+          element.classList.remove('typing');
+          if (callback) callback();
+        }
       }
+      typing();
     }
 
+    // Iniciar tipeo primer bloque
     window.onload = () => {
-      type();
-    }
-  </script>
+      typeText(typingElement, text, () => {
+        startBtn.style.display = 'inline-block';
+      });
+    };
 
-  <audio id="bgMusic" loop autoplay>
-    <source src="musica.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio HTML5.
-  </audio>
-</body>
-</html>
+    // Cuando click en Comenzar, ocultar primer bloque y mostrar segundo
+    startBtn.addEventListener('click', () => {
+      document.getElementById('firstContainer').style.display = 'none';
+      document.getElementById('secondContainer').style.display = 'flex';
+      typeText(secondTypingElement, secondTextContent);
+    });
+
+    // Botón volver para regresar al primer bloque
+    backBtn.addEventListener('click', () => {
+      document.getElementById('secondContainer').style.display
