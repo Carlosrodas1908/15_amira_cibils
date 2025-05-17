@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mis 15 Años</title>
+  
+  <!-- Fuentes elegantes -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Tangerine:wght@700&display=swap" rel="stylesheet" />
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      color: white;
+    }
+
+    body {
+      position: relative;
+      background: url('abi15.jpg') center/cover no-repeat fixed;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('abi15.jpg');
+      background-position: center;
+      background-size: cover;
+      z-index: -1;
+      animation: zoomEffect 5s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    @keyframes zoomEffect {
+      0% { transform: scale(1.05); }
+      100% { transform: scale(1.15); }
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 9vw;
+      color: #fff;
+      text-align: center;
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      z-index: 10;
+      user-select: none;
+      background: rgba(0,0,0,0.1);
+      padding: 0 15px;
+      border-radius: 10px;
+    }
+
+    .nombre {
+      font-family: 'Tangerine', cursive;
+      font-size: 6vw;
+      color: #ffe6f0;
+      text-align: center;
+      position: fixed;
+      top: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 10px 25px;
+      border: 2px solid #ffe6f0;
+      border-radius: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    @media (min-width: 768px) {
+      h1 { font-size: 50px; }
+      .nombre { font-size: 36px; }
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      margin: 10px auto;
+      max-width: 800px;
+      text-align: center;
+      color: white;
+      padding-top: 140px;
+    }
+
+    button {
+      width: 90%;
+      max-width: 300px;
+      margin: 8px 0;
+      padding: 12px;
+      font-size: 4vw;
+      border-radius: 12px;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #d0006f;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    button:hover {
+      background-color: #fff;
+      color: #a8005c;
+    }
+
+    @media (min-width: 768px) {
+      button { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+
+  <h1>Mis 15 Años</h1>
+  <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
+
+  <div class="container">
+    <p>¡Estás invitado a celebrar conmigo!</p>
+    <div class="info">
+      📅 <strong>Fecha:</strong> 20 de julio, 6:00 PM<br>
+      📍 <strong>Lugar:</strong> Salón Los Sueños, Av. Fiesta 123
+    </div>
+
+    <button onclick="window.open('https://goo.gl/maps/xxxxxxxxxx', '_blank')">
+      Ver en Google Maps
+    </button>
+
+    <button onclick="window.open('https://wa.me/1234567890?text=Confirmo%20mi%20asistencia%20a%20tus%2015%20años!', '_blank')">
+      Confirmar asistencia
+    </button>
+
+    <button onclick="alert('🎉 ¡Faltan 30 días para la fiesta!')">
+      Cuenta regresiva
+    </button>
+
+    <button onclick="toggleMusic()" id="musicBtn">
+      Música
+    </button>
+  </div>
+
+  <audio id="bgMusic" loop autoplay>
+    <source src="musica.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <script>
+    function toggleMusic() {
+      const music = document.getElementById("bgMusic");
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+  </script>
+</body>
+</html>

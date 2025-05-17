@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mis 15 Años</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      color: white;
+    }
+
+    body {
+      position: relative;
+      background: url('abi15.jpg') center/cover no-repeat fixed;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('abi15.jpg');
+      background-position: center;
+      background-size: cover;
+      z-index: -1;
+      animation: zoomEffect 5s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    @keyframes zoomEffect {
+      0% { transform: scale(1.05); }
+      100% { transform: scale(1.15); }
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 9vw;
+      color: #fff;
+      text-align: center;
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      z-index: 10;
+      user-select: none;
+      background: rgba(0,0,0,0.1);
+      padding: 0 15px;
+      border-radius: 10px;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      margin: 10px auto;
+      max-width: 800px;
+      text-align: center;
+      color: white;
+      padding-top: 100px;
+    }
+
+    #typing-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 5vw;
+      max-width: 90vw;
+      min-height: 8em;
+      white-space: pre-wrap;
+      border-right: 3px solid white;
+      padding-right: 5px;
+      overflow-wrap: break-word;
+      margin: 0 auto;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    #startBtn {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      background-color: white;
+      color: #d0006f;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    #startBtn:hover {
+      background-color: #f1f1f1;
+      color: #a8005c;
+    }
+
+    @media (min-width: 768px) {
+      h1 { font-size: 50px; }
+      #typing-text {
+        font-size: 24px;
+        min-height: 5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+
+  <h1>Mis 15 Años</h1>
+
+  <div class="container">
+    <div id="typing-text"></div>
+    <button id="startBtn">Comenzar</button>
+  </div>
+
+  <script>
+    const text = `Hace 15 años nació una hermosa niña enviada por Dios
+para ser criada y formada por el más grande tesoro.
+
+Hay momentos en la vida que imaginamos, soñamos y esperamos...
+
+Uno de esos momentos ha llegado.`;
+
+    const typingElement = document.getElementById('typing-text');
+    const startBtn = document.getElementById('startBtn');
+    let index = 0;
+
+    function type() {
+      if (index < text.length) {
+        typingElement.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 60);
+      } else {
+        typingElement.style.borderRight = 'none';
+        startBtn.style.display = 'inline-block';
+         startBtn.addEventListener('click', () => {
+    window.location.href = 'inicionew.html';
+  });
+      }
+    }
+
+    window.onload = () => {
+      type();
+    }
+  </script>
+
+  <audio id="bgMusic" loop autoplay>
+    <source src="musica.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+</body>
+</html>
