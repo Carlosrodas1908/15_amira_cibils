@@ -72,16 +72,41 @@
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 10vw;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       opacity: 0;
       transform: translateY(-30px);
       animation: flyIn 1.2s ease-out forwards;
+    }
+
+    .nombre {
+      font-family: 'Great Vibes', cursive;
+      font-size: 8vw;
+      color: #ffb6c1;
+      opacity: 0;
+      animation: fadeInName 2s ease 1.2s forwards, glow 2s ease-in-out infinite alternate;
+      margin-bottom: 20px;
     }
 
     @keyframes flyIn {
       to {
         transform: translateY(0);
         opacity: 1;
+      }
+    }
+
+    @keyframes fadeInName {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #ffb6c1, 0 0 10px #ff69b4;
+      }
+      to {
+        text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493;
       }
     }
 
@@ -106,6 +131,7 @@
 
     @media (min-width: 768px) {
       h1 { font-size: 60px; }
+      .nombre { font-size: 48px; }
       #typingText { font-size: 24px; }
     }
 
@@ -142,6 +168,7 @@
 
     <div class="content">
       <h1>Mis 15 Años</h1>
+      <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
 
       <!-- Botón de inicio -->
       <button class="start-button" id="startBtn">Comenzar celebración</button>
@@ -162,16 +189,13 @@
     function fixOrientation() {
       const rotatable = document.getElementById('rotatable');
       if(window.matchMedia("(orientation: landscape)").matches) {
-        // Rotar contenido 90 grados para que se vea vertical
         rotatable.style.transform = "rotate(90deg)";
-        // Ajustar tamaño y posición para que se vea bien
         rotatable.style.width = "100vh";
         rotatable.style.height = "100vw";
         rotatable.style.position = "absolute";
         rotatable.style.top = "0";
         rotatable.style.left = "0";
       } else {
-        // Normal, sin rotar
         rotatable.style.transform = "none";
         rotatable.style.width = "100%";
         rotatable.style.height = "100%";
@@ -183,7 +207,7 @@
     window.addEventListener("orientationchange", fixOrientation);
     window.addEventListener("load", fixOrientation);
 
-    // Código original de la tipografía y música
+    // Texto tipo máquina de escribir
     const message = "Bienvenidos a mi celebración. Gracias por acompañarme en este día tan especial.";
     const typingText = document.getElementById("typingText");
     const startBtn = document.getElementById("startBtn");
