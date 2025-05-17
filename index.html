@@ -163,14 +163,6 @@
       to { opacity: 1; }
     }
 
-    .location-section iframe {
-      border-radius: 20px;
-      min-height: 300px;
-      max-width: 600px;
-      width: 100%;
-      border: 0;
-    }
-
     @media (min-width: 768px) {
       h1 { font-size: 80px; }
       .nombre { font-size: 60px; }
@@ -222,15 +214,25 @@
       <p><strong>📍 Dirección:</strong> Quinta Los Cedrales</p>
     </div>
 
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.646181933274!2d-56.04185622480608!3d-26.829004476704803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da8ccf7b19db5%3A0x595b6db0d269d330!2sQuinta%20Los%20Cedrales!5e0!3m2!1ses!2spy!4v1715962951431!5m2!1ses!2spy" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+    <div style="margin-top: 20px; width: 100%; max-width: 600px;">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.646181933274!2d-56.04185622480608!3d-26.829004476704803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da8ccf7b19db5%3A0x595b6db0d269d330!2sQuinta%20Los%20Cedrales!5e0!3m2!1ses!2spy!4v1715962951431!5m2!1ses!2spy" 
+        width="100%" 
+        height="300" 
+        style="border:0; border-radius: 20px;"
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
 
     <button class="pretty-button" style="margin-top: 20px;" onclick="window.open('https://maps.app.goo.gl/tVzjMdPHn13PTntz5', '_blank')">
       <i class="fas fa-map-marked-alt"></i> Ir a Google Maps
+    </button>
+
+    <!-- Botón de retroceso -->
+    <button class="pretty-button" style="margin-top: 15px;" onclick="volverAExtras()">
+      <i class="fas fa-arrow-left"></i> Volver
     </button>
   </div>
 
@@ -279,6 +281,11 @@
       mainContent.style.display = "none";
       locationSection.style.display = "flex";
     });
+
+    function volverAExtras() {
+      locationSection.style.display = "none";
+      mainContent.style.display = "flex";
+    }
 
     function confirmarAsistencia() {
       const opcion = confirm("¿Vas a asistir?\nPresiona 'Aceptar' para SÍ 💖 o 'Cancelar' para NO 😔");
