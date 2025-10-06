@@ -11,11 +11,7 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html, body {
       height: 100%;
@@ -26,24 +22,15 @@
     }
 
     .background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
       background-image: url('abi15.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
+      background-size: cover; background-position: center;
+      background-repeat: no-repeat; background-attachment: fixed;
       z-index: -1;
       animation: zoom 20s ease-in-out infinite alternate;
     }
-
-    @keyframes zoom {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.1); }
-    }
+    @keyframes zoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
 
     .section {
       background: rgba(0, 0, 0, 0.5);
@@ -57,109 +44,60 @@
       align-items: center;
       text-align: center;
       padding: 20px;
-      position: absolute;
-      top: 0;
-      left: 0;
+      position: absolute; top: 0; left: 0;
       overflow-y: auto;
     }
-
-    .section.active {
-      display: flex;
-    }
+    .section.active { display: flex; }
 
     iframe {
-      width: 100%;
-      max-width: 600px;
-      height: 250px;
-      border: 0;
-      border-radius: 20px;
+      width: 100%; max-width: 600px; height: 250px;
+      border: 0; border-radius: 20px;
     }
 
     h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 12vw;
-      margin-bottom: 10px;
-      color: #ffdee9;
+      font-size: 12vw; margin-bottom: 10px; color: #ffdee9;
       text-shadow: 0 0 10px #ff69b4;
-      opacity: 0;
-      animation: flyIn 1.2s ease-out forwards;
+      opacity: 0; animation: flyIn 1.2s ease-out forwards;
     }
-
     .nombre {
       font-family: 'Allura', cursive;
-      font-size: 8vw;
-      color: #ffb6c1;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeInName 2s ease 1.2s forwards, glow 2s ease-in-out infinite alternate;
+      font-size: 8vw; color: #ffb6c1; margin-bottom: 20px;
+      opacity: 0; animation: fadeInName 2s ease 1.2s forwards, glow 2s ease-in-out infinite alternate;
     }
-
-    @keyframes flyIn {
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes fadeInName {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
+    @keyframes flyIn { to { transform: translateY(0); opacity: 1; } }
+    @keyframes fadeInName { to { opacity: 1; transform: translateY(0); } }
     @keyframes glow {
       from { text-shadow: 0 0 5px #ffb6c1, 0 0 10px #ff69b4; }
-      to { text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493; }
+      to   { text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493; }
     }
 
-    #typingText {
-      font-size: 5vw;
-      white-space: pre-wrap;
-      min-height: 3em;
+    #typingText { font-size: 5vw; white-space: pre-wrap; min-height: 3em; opacity: 0; transition: opacity .5s ease-in; }
+    #typingText::after { content: '|'; animation: blink 1s step-start infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .info-line {
+      margin-top: 10px;
+      font-size: 4.5vw;
       opacity: 0;
-      transition: opacity 0.5s ease-in;
-    }
-
-    #typingText::after {
-      content: '|';
-      animation: blink 1s step-start infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
+      transition: opacity .5s ease-in;
     }
 
     .pretty-button {
       margin-top: 15px;
       background: linear-gradient(135deg, #ff69b4, #ffb6c1);
-      color: white;
-      border: none;
-      font-size: 4.5vw;
-      padding: 14px 30px;
-      border-radius: 40px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.6);
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      color: white; border: none; font-size: 4.5vw;
+      padding: 14px 30px; border-radius: 40px; cursor: pointer; font-weight: bold;
+      box-shadow: 0 4px 15px rgba(255,105,180,.6);
+      transition: all .3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;
     }
-
-    .pretty-button:hover {
-      background: linear-gradient(135deg, #ff85c1, #ffc1d6);
-      box-shadow: 0 6px 25px rgba(255, 105, 180, 0.8);
-      transform: scale(1.05);
-    }
-
-    .extra-buttons {
-      display: none;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 20px;
-      width: 100%;
-    }
+    .pretty-button:hover { background: linear-gradient(135deg,#ff85c1,#ffc1d6); box-shadow: 0 6px 25px rgba(255,105,180,.8); transform: scale(1.05); }
 
     @media (min-width: 768px) {
       h1 { font-size: 80px; }
       .nombre { font-size: 60px; }
       #typingText { font-size: 24px; }
+      .info-line { font-size: 20px; }
       .pretty-button { font-size: 20px; padding: 15px 40px; }
     }
   </style>
@@ -167,64 +105,77 @@
 <body>
   <div class="background"></div>
 
+  <!-- Pantalla principal -->
   <div class="section active" id="main">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
+
     <button class="pretty-button" id="startBtn"><i class="fas fa-play"></i> Comenzar celebración</button>
+
     <p id="typingText"></p>
-    <button class="pretty-button" id="continueBtn" style="display:none;"><i class="fas fa-arrow-right"></i> Continuar</button>
-    <div class="extra-buttons" id="extraBtns">
-      <button class="pretty-button" onclick="showSection('ubicacion')"><i class="fas fa-map-marker-alt"></i> Ver ubicación</button>
-      <button class="pretty-button" onclick="confirmarAsistencia()"><i class="fab fa-whatsapp"></i> Confirmar asistencia</button>
-      <button class="pretty-button" onclick="showSection('notas')"><i class="fas fa-info-circle"></i> Nota importante</button>
-    </div>
+
+    <!-- Líneas que pediste -->
+    <p id="padres" class="info-line"><strong>También mis padres:</strong> Mario Cibils y Carolina De la Cruz de Cibils</p>
+    <p id="padrinos" class="info-line"><strong>También mis padrinos:</strong> Guido Aguirre y Berna Cibils</p>
+
+    <!-- Único botón para pasar a la sección de acciones -->
+    <button class="pretty-button" id="continueBtn" style="display:none;">
+      <i class="fas fa-arrow-right"></i> Continuar
+    </button>
   </div>
 
-<div class="section" id="ubicacion">
-  <h1>Mis 15 Años</h1>
-  <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
-  <p><strong>📅 Fecha:</strong> 5 de diciembre</p>
-  <p><strong>🕘 Hora:</strong> 21:00 hs</p>
-  <p><strong>📍 Dirección:</strong> Quinta Los Cedrales</p>
-  
-  <!-- Mapa de Paraguay embebido -->
-  <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3601.147229881987!2d-57.60462432484779!3d-25.33531582885945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da98a8ee4f76b%3A0xc94e4fc89bc8a660!2sQuinta%20Los%20Cedrales!5e0!3m2!1ses-419!2spy!4v1715975396720!5m2!1ses-419!2spy" 
-    allowfullscreen="" 
-    loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
+  <!-- Sección con los tres botones (antes estaban en la principal) -->
+  <div class="section" id="acciones">
+    <h1>Mis 15 Años</h1>
+    <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
 
-  <button class="pretty-button" onclick="window.open('https://maps.app.goo.gl/tVzjMdPHn13PTntz5', '_blank')">
-    <i class="fas fa-map-marked-alt"></i> Ir a Google Maps
-  </button>
+    <button class="pretty-button" onclick="showSection('ubicacion')"><i class="fas fa-map-marker-alt"></i> Ver ubicación</button>
+    <button class="pretty-button" onclick="confirmarAsistencia()"><i class="fab fa-whatsapp"></i> Confirmar asistencia</button>
+    <button class="pretty-button" onclick="showSection('notas')"><i class="fas fa-info-circle"></i> Nota importante</button>
 
-  <button class="pretty-button" onclick="showSection('main')">
-    <i class="fas fa-arrow-left"></i> Volver
-  </button>
-</div>
+    <button class="pretty-button" style="margin-top:24px" onclick="showSection('main')">
+      <i class="fas fa-arrow-left"></i> Volver
+    </button>
+  </div>
 
+  <!-- Ubicación -->
+  <div class="section" id="ubicacion">
+    <h1>Mis 15 Años</h1>
+    <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
+    <p><strong>📅 Fecha:</strong> 5 de diciembre</p>
+    <p><strong>🕘 Hora:</strong> 21:00 hs</p>
+    <p><strong>📍 Dirección:</strong> Quinta Los Cedrales</p>
+
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3601.147229881987!2d-57.60462432484779!3d-25.33531582885945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da98a8ee4f76b%3A0xc94e4fc89bc8a660!2sQuinta%20Los%20Cedrales!5e0!3m2!1ses-419!2spy!4v1715975396720!5m2!1ses-419!2spy"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <button class="pretty-button" onclick="window.open('https://maps.app.goo.gl/tVzjMdPHn13PTntz5', '_blank')">
+      <i class="fas fa-map-marked-alt"></i> Ir a Google Maps
+    </button>
+
+    <button class="pretty-button" onclick="showSection('acciones')">
+      <i class="fas fa-arrow-left"></i> Volver
+    </button>
+  </div>
+
+  <!-- Notas -->
   <div class="section" id="notas">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
+
     <p>✨ <strong>Vestimenta:</strong> Elegante</p>
     <p>🕖 <strong>Misa:</strong> 19:00 hs</p>
     <p>🎉 <strong>Recepción:</strong> 21:00 hs</p>
     <p>💃 <strong>Presentación:</strong> 22:00 hs</p>
-   <div style="margin-top: 20px; background: rgba(255, 255, 255, 0.2); padding: 20px; border-left: 6px solid #ff69b4; border-radius: 15px; max-width: 650px; text-align: left;">
-  <p style="font-weight: 600; font-size: 1.1em; color: #ffe6f0;">
-    🧸 Agradecemos profundamente su comprensión.
-  </p>
-  <p style="margin-top: 8px;">
-    Este evento ha sido organizado especialmente para el disfrute de los adultos.
-  </p>
-  <p style="margin-top: 5px;">
-    Por motivos de seguridad y para preservar el ambiente del festejo, 
-    les pedimos amablemente que no asistan con niños.
-  </p>
-</div>
 
-    <button class="pretty-button" onclick="showSection('main')"><i class="fas fa-arrow-left"></i> Volver</button>
+    <div style="margin-top:20px;background:rgba(255,255,255,.2);padding:20px;border-left:6px solid #ff69b4;border-radius:15px;max-width:650px;text-align:left;">
+      <p style="font-weight:600;font-size:1.1em;color:#ffe6f0;">🧸 Agradecemos profundamente su comprensión.</p>
+      <p style="margin-top:8px;">Este evento ha sido organizado especialmente para el disfrute de los adultos.</p>
+      <p style="margin-top:5px;">Por motivos de seguridad y para preservar el ambiente del festejo, les pedimos amablemente que no asistan con niños.</p>
+    </div>
+
+    <button class="pretty-button" onclick="showSection('acciones')"><i class="fas fa-arrow-left"></i> Volver</button>
   </div>
 
   <audio id="bgMusic" loop>
@@ -238,7 +189,8 @@
     const typingText = document.getElementById("typingText");
     const startBtn = document.getElementById("startBtn");
     const continueBtn = document.getElementById("continueBtn");
-    const extraBtns = document.getElementById("extraBtns");
+    const padres = document.getElementById("padres");
+    const padrinos = document.getElementById("padrinos");
     const bgMusic = document.getElementById("bgMusic");
 
     function typeText() {
@@ -247,6 +199,9 @@
         i++;
         setTimeout(typeText, 40);
       } else {
+        // Mostrar líneas extra y el botón Continuar
+        padres.style.opacity = 1;
+        padrinos.style.opacity = 1;
         continueBtn.style.display = "inline-flex";
       }
     }
@@ -254,14 +209,12 @@
     startBtn.onclick = () => {
       startBtn.style.display = "none";
       typingText.style.opacity = 1;
-      bgMusic.play().catch(err => console.warn("Autoplay bloqueado:", err));
+      bgMusic.play().catch(() => {});
       typeText();
     };
 
-    continueBtn.onclick = () => {
-      continueBtn.style.display = "none";
-      extraBtns.style.display = "flex";
-    };
+    // El botón Continuar lleva a la sección con los 3 botones
+    continueBtn.onclick = () => showSection('acciones');
 
     function showSection(id) {
       document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
