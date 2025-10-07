@@ -72,7 +72,6 @@
   #typingText::after { content: '|'; animation: blink 1s step-start infinite; }
   @keyframes blink { 50% { opacity: 0; } }
 
-  /* ✨ Texto de padres y padrinos con efecto */
   .info-line {
     margin-top: 10px;
     font-size: 4.5vw;
@@ -94,6 +93,14 @@
   @keyframes glowText {
     from { text-shadow: 0 0 5px #ffb6c1, 0 0 10px #ff69b4; }
     to   { text-shadow: 0 0 20px #ff69b4, 0 0 35px #ff1493; }
+  }
+
+  iframe {
+    width: 100%;
+    max-width: 600px;
+    height: 250px;
+    border: 0;
+    border-radius: 20px;
   }
 
   .pretty-button {
@@ -128,23 +135,21 @@
 
     <p id="typingText"></p>
 
-    <!-- Líneas que pediste -->
- <p id="padres" class="info-line glow-text"><strong>También mis padres:</strong> Mario Cibils y Carolina De la Cruz de Cibils</p>
-<p id="padrinos" class="info-line glow-text"><strong>También mis padrinos:</strong> Guido Aguirre y Berna Cibils</p>
+    <p id="padres" class="info-line glow-text"><strong>También mis padres:</strong> Mario Cibils y Carolina De la Cruz de Cibils</p>
+    <p id="padrinos" class="info-line glow-text"><strong>También mis padrinos:</strong> Guido Aguirre y Berna Cibils</p>
 
-
-    <!-- Único botón para pasar a la sección de acciones -->
     <button class="pretty-button" id="continueBtn" style="display:none;">
       <i class="fas fa-arrow-right"></i> Continuar
     </button>
   </div>
 
-  <!-- Sección con los tres botones (antes estaban en la principal) -->
+  <!-- Menú de acciones -->
   <div class="section" id="acciones">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
 
-    <button class="pretty-button" onclick="showSection('ubicacion')"><i class="fas fa-map-marker-alt"></i> Ver ubicación</button>
+    <!-- AHORA lleva al menú de ubicaciones -->
+    <button class="pretty-button" onclick="showSection('ubicacion_menu')"><i class="fas fa-map-marker-alt"></i> Ver ubicación</button>
     <button class="pretty-button" onclick="confirmarAsistencia()"><i class="fab fa-whatsapp"></i> Confirmar asistencia</button>
     <button class="pretty-button" onclick="showSection('notas')"><i class="fas fa-info-circle"></i> Nota importante</button>
 
@@ -153,13 +158,31 @@
     </button>
   </div>
 
-  <!-- Ubicación -->
-  <div class="section" id="ubicacion">
+  <!-- NUEVA: Menú de ubicaciones -->
+  <div class="section" id="ubicacion_menu">
+    <h1>Mis 15 Años</h1>
+    <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
+
+    <button class="pretty-button" onclick="showSection('ubicacion_misa')">
+      <i class="fas fa-church"></i> Ubicación misa
+    </button>
+
+    <button class="pretty-button" onclick="showSection('ubicacion_local')">
+      <i class="fas fa-map-marked-alt"></i> Ubicación local
+    </button>
+
+    <button class="pretty-button" onclick="showSection('acciones')">
+      <i class="fas fa-arrow-left"></i> Volver
+    </button>
+  </div>
+
+  <!-- Ubicación: MISA -->
+  <div class="section" id="ubicacion_misa">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
     <p><strong>📅 Fecha:</strong> 5 de diciembre</p>
-    <p><strong>🕘 Hora:</strong> 21:00 hs</p>
-    <p><strong>📍 Dirección:</strong> Quinta Los Cedrales</p>
+    <p><strong>🕘 Hora:</strong> 19:00 hs</p>
+    <p><strong>📍 Dirección:</strong> (Misa) Quinta Los Cedrales</p>
 
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3601.147229881987!2d-57.60462432484779!3d-25.33531582885945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da98a8ee4f76b%3A0xc94e4fc89bc8a660!2sQuinta%20Los%20Cedrales!5e0!3m2!1ses-419!2spy!4v1715975396720!5m2!1ses-419!2spy"
@@ -169,7 +192,28 @@
       <i class="fas fa-map-marked-alt"></i> Ir a Google Maps
     </button>
 
-    <button class="pretty-button" onclick="showSection('acciones')">
+    <button class="pretty-button" onclick="showSection('ubicacion_menu')">
+      <i class="fas fa-arrow-left"></i> Volver
+    </button>
+  </div>
+
+  <!-- Ubicación: LOCAL -->
+  <div class="section" id="ubicacion_local">
+    <h1>Mis 15 Años</h1>
+    <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
+    <p><strong>📅 Fecha:</strong> 5 de diciembre</p>
+    <p><strong>🕘 Hora:</strong> 21:00 hs</p>
+    <p><strong>📍 Dirección:</strong> (Recepción) Quinta Los Cedrales</p>
+
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3601.147229881987!2d-57.60462432484779!3d-25.33531582885945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da98a8ee4f76b%3A0xc94e4fc89bc8a660!2sQuinta%20Los%20Cedrales!5e0!3m2!1ses-419!2spy!4v1715975396720!5m2!1ses-419!2spy"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <button class="pretty-button" onclick="window.open('https://maps.app.goo.gl/tVzjMdPHn13PTntz5', '_blank')">
+      <i class="fas fa-map-marked-alt"></i> Ir a Google Maps
+    </button>
+
+    <button class="pretty-button" onclick="showSection('ubicacion_menu')">
       <i class="fas fa-arrow-left"></i> Volver
     </button>
   </div>
@@ -214,7 +258,6 @@
         i++;
         setTimeout(typeText, 40);
       } else {
-        // Mostrar líneas extra y el botón Continuar
         padres.style.opacity = 1;
         padrinos.style.opacity = 1;
         continueBtn.style.display = "inline-flex";
@@ -228,7 +271,6 @@
       typeText();
     };
 
-    // El botón Continuar lleva a la sección con los 3 botones
     continueBtn.onclick = () => showSection('acciones');
 
     function showSection(id) {
@@ -246,4 +288,3 @@
   </script>
 </body>
 </html>
-
