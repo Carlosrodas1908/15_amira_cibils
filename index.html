@@ -11,96 +11,110 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html, body {
-      height: 100%;
-      width: 100%;
-      font-family: 'Poppins', sans-serif;
-      color: white;
-      overflow: hidden;
-    }
+  html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    overflow: hidden;
+  }
 
-    .background {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-image: url('abi15.jpg');
-      background-size: cover; background-position: center;
-      background-repeat: no-repeat; background-attachment: fixed;
-      z-index: -1;
-      animation: zoom 20s ease-in-out infinite alternate;
-    }
-    @keyframes zoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+  .background {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('abi15.jpg');
+    background-size: cover; background-position: center;
+    background-repeat: no-repeat; background-attachment: fixed;
+    z-index: -1;
+    animation: zoom 20s ease-in-out infinite alternate;
+  }
+  @keyframes zoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
 
-    .section {
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 25px;
-      margin: 15px;
-      width: calc(100% - 30px);
-      height: calc(100% - 30px);
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      position: absolute; top: 0; left: 0;
-      overflow-y: auto;
-    }
-    .section.active { display: flex; }
+  .section {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+    margin: 15px;
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    position: absolute; top: 0; left: 0;
+    overflow-y: auto;
+  }
+  .section.active { display: flex; }
 
-    iframe {
-      width: 100%; max-width: 600px; height: 250px;
-      border: 0; border-radius: 20px;
-    }
+  h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 12vw; margin-bottom: 10px; color: #ffdee9;
+    text-shadow: 0 0 10px #ff69b4;
+    opacity: 0; animation: flyIn 1.2s ease-out forwards;
+  }
+  .nombre {
+    font-family: 'Allura', cursive;
+    font-size: 8vw; color: #ffb6c1; margin-bottom: 20px;
+    opacity: 0; animation: fadeInName 2s ease 1.2s forwards, glow 2s ease-in-out infinite alternate;
+  }
 
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 12vw; margin-bottom: 10px; color: #ffdee9;
-      text-shadow: 0 0 10px #ff69b4;
-      opacity: 0; animation: flyIn 1.2s ease-out forwards;
-    }
-    .nombre {
-      font-family: 'Allura', cursive;
-      font-size: 8vw; color: #ffb6c1; margin-bottom: 20px;
-      opacity: 0; animation: fadeInName 2s ease 1.2s forwards, glow 2s ease-in-out infinite alternate;
-    }
-    @keyframes flyIn { to { transform: translateY(0); opacity: 1; } }
-    @keyframes fadeInName { to { opacity: 1; transform: translateY(0); } }
-    @keyframes glow {
-      from { text-shadow: 0 0 5px #ffb6c1, 0 0 10px #ff69b4; }
-      to   { text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493; }
-    }
+  @keyframes flyIn { to { transform: translateY(0); opacity: 1; } }
+  @keyframes fadeInName { to { opacity: 1; transform: translateY(0); } }
+  @keyframes glow {
+    from { text-shadow: 0 0 5px #ffb6c1, 0 0 10px #ff69b4; }
+    to   { text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493; }
+  }
 
-    #typingText { font-size: 5vw; white-space: pre-wrap; min-height: 3em; opacity: 0; transition: opacity .5s ease-in; }
-    #typingText::after { content: '|'; animation: blink 1s step-start infinite; }
-    @keyframes blink { 50% { opacity: 0; } }
+  #typingText { font-size: 5vw; white-space: pre-wrap; min-height: 3em; opacity: 0; transition: opacity .5s ease-in; }
+  #typingText::after { content: '|'; animation: blink 1s step-start infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
 
-    .info-line {
-      margin-top: 10px;
-      font-size: 4.5vw;
-      opacity: 0;
-      transition: opacity .5s ease-in;
-    }
+  /* ✨ Texto de padres y padrinos con efecto */
+  .info-line {
+    margin-top: 10px;
+    font-size: 4.5vw;
+    opacity: 0;
+    animation: fadeInText 2s ease forwards;
+  }
 
-    .pretty-button {
-      margin-top: 15px;
-      background: linear-gradient(135deg, #ff69b4, #ffb6c1);
-      color: white; border: none; font-size: 4.5vw;
-      padding: 14px 30px; border-radius: 40px; cursor: pointer; font-weight: bold;
-      box-shadow: 0 4px 15px rgba(255,105,180,.6);
-      transition: all .3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;
-    }
-    .pretty-button:hover { background: linear-gradient(135deg,#ff85c1,#ffc1d6); box-shadow: 0 6px 25px rgba(255,105,180,.8); transform: scale(1.05); }
+  .glow-text {
+    color: #ffe6f0;
+    text-shadow: 0 0 8px #ffb6c1, 0 0 15px #ff69b4;
+    animation: glowText 3s ease-in-out infinite alternate;
+  }
 
-    @media (min-width: 768px) {
-      h1 { font-size: 80px; }
-      .nombre { font-size: 60px; }
-      #typingText { font-size: 24px; }
-      .info-line { font-size: 20px; }
-      .pretty-button { font-size: 20px; padding: 15px 40px; }
-    }
-  </style>
+  @keyframes fadeInText {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes glowText {
+    from { text-shadow: 0 0 5px #ffb6c1, 0 0 10px #ff69b4; }
+    to   { text-shadow: 0 0 20px #ff69b4, 0 0 35px #ff1493; }
+  }
+
+  .pretty-button {
+    margin-top: 25px;
+    background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+    color: white; border: none; font-size: 4.5vw;
+    padding: 14px 30px; border-radius: 40px; cursor: pointer; font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255,105,180,.6);
+    transition: all .3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .pretty-button:hover { background: linear-gradient(135deg,#ff85c1,#ffc1d6); box-shadow: 0 6px 25px rgba(255,105,180,.8); transform: scale(1.05); }
+
+  @media (min-width: 768px) {
+    h1 { font-size: 80px; }
+    .nombre { font-size: 60px; }
+    #typingText { font-size: 24px; }
+    .info-line { font-size: 20px; }
+    .pretty-button { font-size: 20px; padding: 15px 40px; }
+  }
+</style>
+
 </head>
 <body>
   <div class="background"></div>
@@ -115,8 +129,9 @@
     <p id="typingText"></p>
 
     <!-- Líneas que pediste -->
-    <p id="padres" class="info-line"><strong>También mis padres:</strong> Mario Cibils y Carolina De la Cruz de Cibils</p>
-    <p id="padrinos" class="info-line"><strong>También mis padrinos:</strong> Guido Aguirre y Berna Cibils</p>
+ <p id="padres" class="info-line glow-text"><strong>También mis padres:</strong> Mario Cibils y Carolina De la Cruz de Cibils</p>
+<p id="padrinos" class="info-line glow-text"><strong>También mis padrinos:</strong> Guido Aguirre y Berna Cibils</p>
+
 
     <!-- Único botón para pasar a la sección de acciones -->
     <button class="pretty-button" id="continueBtn" style="display:none;">
@@ -231,3 +246,4 @@
   </script>
 </body>
 </html>
+
