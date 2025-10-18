@@ -11,12 +11,24 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
+  /* Fuente Kitten Café */
+  @font-face {
+    font-family: 'Kitten Café';
+    src: url('fonts/Kitten Café_PersonalUseOnly.ttf') format('truetype'),
+         url('fonts/Kitten-Cafe_PersonalUseOnly.otf') format('opentype'),
+         url('fonts/KittenCafe_PersonalUseOnly.woff') format('woff'),
+         url('fonts/KittenCafe_PersonalUseOnly.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html, body {
     height: 100%;
     width: 100%;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Kitten Café', 'Poppins', sans-serif;
     color: white;
     overflow: hidden;
   }
@@ -50,30 +62,45 @@
   .section.active { display: flex; }
 
   h1 {
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Kitten Café', 'Great Vibes', cursive;
     font-size: 12vw; margin-bottom: 10px; color: #ffdee9;
     text-shadow: 0 0 10px #ff69b4;
     opacity: 0; animation: flyIn 1.2s ease-out forwards;
   }
   .nombre {
-    font-family: 'Allura', cursive;
+    font-family: 'Kitten Café', 'Allura', cursive;
     font-size: 8vw; color: #ffb6c1; margin-bottom: 20px;
     opacity: 0; animation: fadeInName 2s ease 1.2s forwards, glow 2s ease-in-out infinite alternate;
   }
 
-  @keyframes flyIn { to { transform: translateY(0); opacity: 1; } }
-  @keyframes fadeInName { to { opacity: 1; transform: translateY(0); } }
+  @keyframes flyIn { 
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; } 
+  }
+  @keyframes fadeInName { 
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); } 
+  }
   @keyframes glow {
     from { text-shadow: 0 0 5px #ffb6c1, 0 0 10px #ff69b4; }
     to   { text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493; }
   }
 
-  #typingText { font-size: 5vw; white-space: pre-wrap; min-height: 3em; opacity: 0; transition: opacity .5s ease-in; }
+  #typingText { 
+    font-family: 'Kitten Café', 'Poppins', sans-serif;
+    font-size: 5vw; 
+    white-space: pre-wrap; 
+    min-height: 3em; 
+    opacity: 0; 
+    transition: opacity .5s ease-in; 
+    line-height: 1.4;
+  }
   #typingText::after { content: '|'; animation: blink 1s step-start infinite; }
   @keyframes blink { 50% { opacity: 0; } }
 
   .info-line {
     margin-top: 10px;
+    font-family: 'Kitten Café', 'Poppins', sans-serif;
     font-size: 4.5vw;
     opacity: 0;
     animation: fadeInText 2s ease forwards;
@@ -101,17 +128,58 @@
     height: 250px;
     border: 0;
     border-radius: 20px;
+    margin: 10px 0;
   }
 
   .pretty-button {
     margin-top: 25px;
     background: linear-gradient(135deg, #ff69b4, #ffb6c1);
-    color: white; border: none; font-size: 4.5vw;
-    padding: 14px 30px; border-radius: 40px; cursor: pointer; font-weight: bold;
+    color: white; 
+    border: none; 
+    font-family: 'Kitten Café', 'Poppins', sans-serif;
+    font-size: 4.5vw;
+    padding: 14px 30px; 
+    border-radius: 40px; 
+    cursor: pointer; 
+    font-weight: bold;
     box-shadow: 0 4px 15px rgba(255,105,180,.6);
-    transition: all .3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;
+    transition: all .3s ease; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px;
   }
-  .pretty-button:hover { background: linear-gradient(135deg,#ff85c1,#ffc1d6); box-shadow: 0 6px 25px rgba(255,105,180,.8); transform: scale(1.05); }
+  .pretty-button:hover { 
+    background: linear-gradient(135deg,#ff85c1,#ffc1d6); 
+    box-shadow: 0 6px 25px rgba(255,105,180,.8); 
+    transform: scale(1.05); 
+  }
+
+  p {
+    font-family: 'Kitten Café', 'Poppins', sans-serif;
+  }
+
+  .nota-container {
+    margin-top: 20px;
+    background: rgba(255,255,255,.2);
+    padding: 20px;
+    border-left: 6px solid #ff69b4;
+    border-radius: 15px;
+    max-width: 650px;
+    text-align: left;
+    font-family: 'Kitten Café', 'Poppins', sans-serif;
+  }
+
+  .nota-container p {
+    margin-bottom: 8px;
+  }
+
+  .nota-titulo {
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #ffe6f0;
+    font-family: 'Kitten Café', 'Poppins', sans-serif;
+  }
 
   @media (min-width: 768px) {
     h1 { font-size: 80px; }
@@ -119,6 +187,25 @@
     #typingText { font-size: 24px; }
     .info-line { font-size: 20px; }
     .pretty-button { font-size: 20px; padding: 15px 40px; }
+  }
+
+  /* Estilos para mejorar la legibilidad en móviles */
+  @media (max-width: 480px) {
+    .section {
+      padding: 15px;
+      margin: 10px;
+      width: calc(100% - 20px);
+      height: calc(100% - 20px);
+    }
+    
+    #typingText {
+      font-size: 5.5vw;
+      line-height: 1.5;
+    }
+    
+    .info-line {
+      font-size: 5vw;
+    }
   }
 </style>
 
@@ -177,47 +264,44 @@
   </div>
 
   <!-- Ubicación: MISA -->
-  <!-- Ubicación: MISA -->
-<div class="section" id="ubicacion_misa">
-  <h1>Mis 15 Años</h1>
-  <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
-  <p><strong>📅 Fecha:</strong> 5 de diciembre</p>
-  <p><strong>🕘 Hora:</strong> 18:00 hs</p>
-  <p><strong>📍 Dirección:</strong> (Misa) — Parroquia Medalla Milagrosa</p>
+  <div class="section" id="ubicacion_misa">
+    <h1>Mis 15 Años</h1>
+    <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
+    <p><strong>📅 Fecha:</strong> 5 de diciembre</p>
+    <p><strong>🕘 Hora:</strong> 18:00 hs</p>
+    <p><strong>📍 Dirección:</strong> (Misa) — Parroquia Medalla Milagrosa</p>
 
-  <!-- Pegar aquí el embed real de la misa cuando lo tengas -->
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.4886721436883!2d-57.557190000000006!3d-25.321378100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da8d593c39b8d%3A0x7ded33e3eac2863d!2sPARROQUIA%20Medalla%20Milagrosa!5e0!3m2!1ses-419!2spy!4v1759842607963!5m2!1ses-419!2spy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.4886721436883!2d-57.557190000000006!3d-25.321378100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da8d593c39b8d%3A0x7ded33e3eac2863d!2sPARROQUIA%20Medalla%20Milagrosa!5e0!3m2!1ses-419!2spy!4v1759842607963!5m2!1ses-419!2spy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-  <button class="pretty-button"
-          onclick="window.open('https://maps.app.goo.gl/gMLcNJoue9WkkREz6', '_blank')">
-    <i class="fas fa-map-marked-alt"></i> Ir a Google Maps
-  </button>
+    <button class="pretty-button"
+            onclick="window.open('https://maps.app.goo.gl/gMLcNJoue9WkkREz6', '_blank')">
+      <i class="fas fa-map-marked-alt"></i> Ir a Google Maps
+    </button>
 
-  <button class="pretty-button" onclick="showSection('ubicacion_menu')">
-    <i class="fas fa-arrow-left"></i> Volver
-  </button>
-</div>
+    <button class="pretty-button" onclick="showSection('ubicacion_menu')">
+      <i class="fas fa-arrow-left"></i> Volver
+    </button>
+  </div>
 
-<!-- Ubicación: LOCAL -->
-<div class="section" id="ubicacion_local">
-  <h1>Mis 15 Años</h1>
-  <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
-  <p><strong>📅 Fecha:</strong> 5 de diciembre</p>
-  <p><strong>🕘 Hora:</strong> 21:30 hs</p>
-  <p><strong>📍 Dirección:</strong> Local - Ciella Espacio de Eventos</p>
+  <!-- Ubicación: LOCAL -->
+  <div class="section" id="ubicacion_local">
+    <h1>Mis 15 Años</h1>
+    <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
+    <p><strong>📅 Fecha:</strong> 5 de diciembre</p>
+    <p><strong>🕘 Hora:</strong> 21:30 hs</p>
+    <p><strong>📍 Dirección:</strong> Local - Ciella Espacio de Eventos</p>
 
-  <!-- Pegar aquí el embed real del local cuando lo tengas -->
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.6853037679803!2d-57.546450500000006!3d-25.2811696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945dafc640ffbca1%3A0xa4e999c8beef258a!2sCiella%20Espacio%20de%20Eventos!5e0!3m2!1ses-419!2spy!4v1759842755874!5m2!1ses-419!2spy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.6853037679803!2d-57.546450500000006!3d-25.2811696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945dafc640ffbca1%3A0xa4e999c8beef258a!2sCiella%20Espacio%20de%20Eventos!5e0!3m2!1ses-419!2spy!4v1759842755874!5m2!1ses-419!2spy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-  <button class="pretty-button"
-          onclick="window.open('https://maps.app.goo.gl/JEvyw2GTCJ2ugNFD7', '_blank')">
-    <i class="fas fa-map-marked-alt"></i> Ir a Google Maps
-  </button>
+    <button class="pretty-button"
+            onclick="window.open('https://maps.app.goo.gl/JEvyw2GTCJ2ugNFD7', '_blank')">
+      <i class="fas fa-map-marked-alt"></i> Ir a Google Maps
+    </button>
 
-  <button class="pretty-button" onclick="showSection('ubicacion_menu')">
-    <i class="fas fa-arrow-left"></i> Volver
-  </button>
-</div>
+    <button class="pretty-button" onclick="showSection('ubicacion_menu')">
+      <i class="fas fa-arrow-left"></i> Volver
+    </button>
+  </div>
 
   <!-- Notas -->
   <div class="section" id="notas">
@@ -229,10 +313,10 @@
     <p>🎉 <strong>Recepción:</strong> 21:00 hs</p>
     <p>💃 <strong>Presentación:</strong> 22:00 hs</p>
 
-    <div style="margin-top:20px;background:rgba(255,255,255,.2);padding:20px;border-left:6px solid #ff69b4;border-radius:15px;max-width:650px;text-align:left;">
-      <p style="font-weight:600;font-size:1.1em;color:#ffe6f0;">🧸 Agradecemos profundamente su comprensión.</p>
-      <p style="margin-top:8px;">Este evento ha sido organizado especialmente para el disfrute de los adultos.</p>
-      <p style="margin-top:5px;">Por motivos de seguridad y para preservar el ambiente del festejo, les pedimos amablemente que no asistan con niños.</p>
+    <div class="nota-container">
+      <p class="nota-titulo">🧸 Agradecemos profundamente su comprensión.</p>
+      <p>Este evento ha sido organizado especialmente para el disfrute de los adultos.</p>
+      <p>Por motivos de seguridad y para preservar el ambiente del festejo, les pedimos amablemente que no asistan con niños.</p>
     </div>
 
     <button class="pretty-button" onclick="showSection('acciones')"><i class="fas fa-arrow-left"></i> Volver</button>
@@ -286,10 +370,11 @@
       const enlace = `https://wa.me/${telefono}?text=${mensaje}`;
       window.open(enlace, '_blank');
     }
+
+    // Precargar la fuente para mejor rendimiento
+    document.fonts.load('1em "Kitten Café"').then(() => {
+      console.log('Fuente Kitten Café cargada');
+    });
   </script>
 </body>
 </html>
-
-
-
-
