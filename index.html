@@ -86,16 +86,17 @@
     to   { text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493; }
   }
 
-  #typingText { 
-    font-family: 'Kitten Café', 'Poppins', sans-serif;
+ #typingText { 
+    font-family: 'Poppins', sans-serif; /* Usar Poppins que sí tiene itálica */
     font-size: 5vw; 
-    font-style: italic; /* Texto en cursiva */
+    font-style: italic;
     white-space: pre-wrap; 
     min-height: 3em; 
     opacity: 0; 
     transition: opacity .5s ease-in; 
     line-height: 1.4;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    font-weight: 300; /* Hacerla más delgada para mejor legibilidad en cursiva */
   }
   #typingText::after { content: '|'; animation: blink 1s step-start infinite; }
   @keyframes blink { 50% { opacity: 0; } }
@@ -381,3 +382,4 @@
   </script>
 </body>
 </html>
+
