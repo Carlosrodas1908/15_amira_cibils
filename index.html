@@ -196,6 +196,39 @@
 @media (max-width:480px){
   #acciones .btn-sm{ font-size: 4.4vw; padding: 9px 14px; width: 90%; }
 }
+/* --- Pastillas para la sección de regalo --- */
+#regalo .regalo-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin: 10px 0 6px;
+}
+
+#regalo .pill{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background: rgba(255,255,255,.18);
+  color:#fff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.25);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+#regalo .pill.only-icon{
+  width:46px; height:46px;
+  padding:0; justify-content:center;
+}
+
+#regalo .pill i{ font-size: 1.15em; }
+#regalo .pill span{ font-size: 4vw; }
+@media (min-width:768px){
+  #regalo .pill span{ font-size: 18px; }
+}
 
   </style>
 </head>
@@ -319,27 +352,34 @@
   </div>
 
   <!-- Opción de regalo (NUEVA) -->
-  <div class="section" id="regalo">
-    <h1>Mis 15 Años</h1>
-    <h2 class="invitados">Opción de regalo</h2>
-    <p class="info-line" style="animation-delay:.3s">🎁 <em>Mi mejor regalo es compartir contigo este gran día,</em></p>
-    <p class="info-line" style="animation-delay:.6s">si deseas obsequiarme algo, puedo sugerirte la siguiente opción :</p>
-    <!-- Si luego tienes alias/CBU/link, colócalo aquí -->
-    <button class="pretty-button" onclick="showSection('acciones')"><i class="fas fa-arrow-left"></i> Volver</button>
-  </div>
+ <!-- Opción de regalo -->
+<div class="section" id="regalo">
+  <h1>Mis 15 Años</h1>
+  <h2 class="invitados">Opción de regalo</h2>
 
-  <!-- Notas -->
-  <div class="section" id="notas">
-    <h1>Mis 15 Años</h1>
-    <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
+  <p class="info-line" style="animation-delay:.3s">
+    🎁 <em>Mi mejor regalo es compartir contigo este gran día,</em>
+  </p>
+  <p class="info-line" style="animation-delay:.6s">
+    si deseas obsequiarme algo, puedo sugerirte la siguiente opción :
+  </p>
 
-    <div class="nota-container">
-      <p class="nota-titulo">🧸 Agradecemos profundamente su comprensión.</p>
-      <p>Este evento ha sido organizado especialmente para el disfrute de los adultos.</p>
-      <p>Por motivos de seguridad y para preservar el ambiente del festejo, les pedimos amablemente que no asistan con niños.</p>
+  <!-- Fila con icono de regalo y sobre con alias/banco -->
+  <div class="regalo-row">
+    <div class="pill only-icon" aria-hidden="true">
+      <i class="fa-solid fa-gift"></i>
     </div>
-    <button class="pretty-button" onclick="showSection('acciones')"><i class="fas fa-arrow-left"></i> Volver</button>
+    <div class="pill">
+      <i class="fa-solid fa-envelope"></i>
+      <span><strong>Alias CI:</strong> 444444 &nbsp; • &nbsp; <strong>Banco:</strong> Ueno Bank</span>
+    </div>
   </div>
+
+  <button class="pretty-button" onclick="showSection('acciones')">
+    <i class="fas fa-arrow-left"></i> Volver
+  </button>
+</div>
+
 
   <audio id="bgMusic" loop>
     <source src="romantica.mp3" type="audio/mpeg" />
@@ -409,6 +449,7 @@
   </script>
 </body>
 </html>
+
 
 
 
