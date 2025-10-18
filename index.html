@@ -11,7 +11,6 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
-  /* Fuente Kitten Café */
   @font-face {
     font-family: 'Kitten Café';
     src: url('fonts/Kitten Café_PersonalUseOnly.ttf') format('truetype'),
@@ -67,24 +66,16 @@
     text-shadow: 0 0 10px #ff69b4;
     opacity: 0; animation: flyIn 1.2s ease-out forwards;
   }
-  .nombre {
+
+  .nombre { /* se usa en otras pantallas */
     font-family: 'Kitten Café', 'Allura', cursive;
     font-size: 8vw; color: #ffb6c1; margin-bottom: 20px;
     opacity: 0; animation: fadeInName 2s ease 1.2s forwards, glow 2s ease-in-out infinite alternate;
   }
 
-  @keyframes flyIn { 
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; } 
-  }
-  @keyframes fadeInName { 
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); } 
-  }
-  @keyframes glow {
-    from { text-shadow: 0 0 5px #ffb6c1, 0 0 10px #ff69b4; }
-    to   { text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493; }
-  }
+  @keyframes flyIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  @keyframes fadeInName { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes glow { from { text-shadow: 0 0 5px #ffb6c1, 0 0 10px #ff69b4; } to { text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493; } }
 
   /* Texto con efecto de tipeo */
   .typing {
@@ -102,6 +93,24 @@
   .typing::after { content: '|'; animation: blink 1s step-start infinite; }
   @keyframes blink { 50% { opacity: 0; } }
 
+  /* Subtítulo elegante e info de fecha para la pantalla de acciones */
+  .invitados {
+    font-family: 'Kitten Café','Allura',cursive;
+    font-size: 9vw;
+    color: #ffe4ee;
+    text-shadow: 0 0 8px #ff9ac5, 0 0 16px #ff5fa6;
+    animation: fadeInName 1.5s ease forwards;
+    margin-bottom: 8px;
+  }
+  .fecha-bonita {
+    font-family: 'Great Vibes', cursive;
+    font-size: 7vw;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,105,180,.6);
+  }
+
   .info-line {
     margin-top: 10px;
     font-family: 'Kitten Café', 'Poppins', sans-serif;
@@ -109,22 +118,7 @@
     opacity: 0;
     animation: fadeInText 1s ease forwards;
   }
-
-  .glow-text {
-    color: #ffe6f0;
-    text-shadow: 0 0 8px #ffb6c1, 0 0 15px #ff69b4;
-    animation: glowText 3s ease-in-out infinite alternate;
-  }
-
-  @keyframes fadeInText {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes glowText {
-    from { text-shadow: 0 0 5px #ffb6c1, 0 0 10px #ff69b4; }
-    to   { text-shadow: 0 0 20px #ff69b4, 0 0 35px #ff1493; }
-  }
+  @keyframes fadeInText { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
   iframe {
     width: 100%;
@@ -136,7 +130,7 @@
   }
 
   .pretty-button {
-    margin-top: 25px;
+    margin-top: 16px;
     background: linear-gradient(135deg, #ff69b4, #ffb6c1);
     color: white; 
     border: none; 
@@ -147,114 +141,96 @@
     cursor: pointer; 
     font-weight: bold;
     box-shadow: 0 4px 15px rgba(255,105,180,.6);
-    transition: all .3s ease; 
+    transition: all .25s ease; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
     gap: 10px;
+    width: min(520px, 90%);
   }
   .pretty-button:hover { 
     background: linear-gradient(135deg,#ff85c1,#ffc1d6); 
     box-shadow: 0 6px 25px rgba(255,105,180,.8); 
-    transform: scale(1.05); 
-  }
-
-  p { font-family: 'Kitten Café', 'Poppins', sans-serif; }
-
-  .nota-container {
-    margin-top: 20px;
-    background: rgba(255,255,255,.2);
-    padding: 20px;
-    border-left: 6px solid #ff69b4;
-    border-radius: 15px;
-    max-width: 650px;
-    text-align: left;
-    font-family: 'Kitten Café', 'Poppins', sans-serif;
-  }
-
-  .nota-titulo {
-    font-weight: 600;
-    font-size: 1.1em;
-    color: #ffe6f0;
-    font-family: 'Kitten Café', 'Poppins', sans-serif;
+    transform: translateY(-1px); 
   }
 
   @media (min-width: 768px) {
     h1 { font-size: 80px; }
     .nombre { font-size: 60px; }
     .typing { font-size: 24px; }
-    .info-line, .pretty-button { font-size: 20px; }
-    .pretty-button { padding: 15px 40px; }
+    .invitados { font-size: 56px; }
+    .fecha-bonita { font-size: 44px; }
+    .pretty-button { font-size: 20px; padding: 15px 40px; }
   }
 
   @media (max-width: 480px) {
-    .section {
-      padding: 15px;
-      margin: 10px;
-      width: calc(100% - 20px);
-      height: calc(100% - 20px);
-    }
+    .section { padding: 15px; margin: 10px; width: calc(100% - 20px); height: calc(100% - 20px); }
     .typing { font-size: 5.5vw; line-height: 1.6; }
-    .info-line { font-size: 5vw; }
+    .invitados { font-size: 10vw; }
+    .fecha-bonita { font-size: 7.5vw; }
   }
   </style>
 </head>
 <body>
   <div class="background"></div>
 
-  <!-- Pantalla 1: principal (solo texto blanco con tipeo) -->
+  <!-- Pantalla 1: principal (con tipeo) -->
   <div class="section active" id="main">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
-
     <button class="pretty-button" id="startBtn"><i class="fas fa-play"></i> Abrir</button>
-
     <p id="typingText" class="typing"></p>
-
-    <!-- (Eliminado: “También mis padres” y “También mis padrinos”) -->
-
-    <button class="pretty-button" id="continueBtn" style="display:none;">
-      <i class="fas fa-arrow-right"></i> Continuar
-    </button>
+    <button class="pretty-button" id="continueBtn" style="display:none;"><i class="fas fa-arrow-right"></i> Continuar</button>
   </div>
 
-  <!-- Pantalla 2: invitación (texto con mismo efecto) -->
+  <!-- Pantalla 2: invitación (con tipeo) -->
   <div class="section" id="invitacion">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
-
     <p id="typingText2" class="typing"></p>
-
-    <button class="pretty-button" id="continueBtn2" style="display:none;">
-      <i class="fas fa-arrow-right"></i> Continuar
-    </button>
+    <button class="pretty-button" id="continueBtn2" style="display:none;"><i class="fas fa-arrow-right"></i> Continuar</button>
   </div>
 
-  <!-- Pantalla 3: compañía de padres / padrinos -->
+  <!-- Pantalla 3: compañía -->
   <div class="section" id="companias">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
-
-    <p class="info-line glow-text" style="animation-delay:.2s"><strong>En compañía de mis padres:</strong></p>
+    <p class="info-line" style="animation-delay:.2s"><strong>En compañía de mis padres:</strong></p>
     <p class="info-line" style="animation-delay:.5s">Carolina</p>
     <p class="info-line" style="animation-delay:.8s">Mario</p>
-
-    <p class="info-line glow-text" style="animation-delay:1.1s; margin-top:12px"><strong>Padrinos:</strong></p>
+    <p class="info-line" style="animation-delay:1.1s; margin-top:12px"><strong>Padrinos:</strong></p>
     <p class="info-line" style="animation-delay:1.4s">Guido y Berna</p>
-
-    <button class="pretty-button" id="continueBtn3" style="margin-top:24px">
-      <i class="fas fa-arrow-right"></i> Continuar
-    </button>
+    <button class="pretty-button" id="continueBtn3" style="margin-top:24px"><i class="fas fa-arrow-right"></i> Continuar</button>
   </div>
 
-  <!-- Menú de acciones (tu segunda imagen) -->
+  <!-- NUEVA: Pantalla 4 (MENÚ) -->
   <div class="section" id="acciones">
     <h1>Mis 15 Años</h1>
-    <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
 
-    <button class="pretty-button" onclick="showSection('ubicacion_menu')"><i class="fas fa-map-marker-alt"></i> Ver ubicación</button>
-    <button class="pretty-button" onclick="confirmarAsistencia()"><i class="fab fa-whatsapp"></i> Confirmar asistencia</button>
-    <button class="pretty-button" onclick="showSection('notas')"><i class="fas fa-info-circle"></i> Nota importante</button>
+    <!-- NUEVOS textos en lugar del nombre -->
+    <h2 class="invitados">Están cordialmente invitados</h2>
+    <p class="fecha-bonita">Diciembre 05 Viernes 21:30hs</p>
+
+    <!-- Botones con íconos -->
+    <button class="pretty-button" onclick="showSection('ubicacion_menu')">
+      <i class="fas fa-map-marked-alt"></i> Ver ubicación
+    </button>
+
+    <button class="pretty-button" onclick="confirmarAsistencia()">
+      <i class="fab fa-whatsapp"></i> Confirmar asistencia
+    </button>
+
+    <button class="pretty-button" onclick="showSection('regalo')">
+      <i class="fas fa-gift"></i> Opción de regalo
+    </button>
+
+    <button class="pretty-button" onclick="showSection('vestimenta')">
+      <i class="fas fa-tshirt"></i> Vestimenta
+    </button>
+
+    <button class="pretty-button" onclick="showSection('notas')">
+      <i class="fas fa-info-circle"></i> Nota importante
+    </button>
 
     <button class="pretty-button" style="margin-top:24px" onclick="showSection('main')">
       <i class="fas fa-arrow-left"></i> Volver
@@ -265,18 +241,9 @@
   <div class="section" id="ubicacion_menu">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
-
-    <button class="pretty-button" onclick="showSection('ubicacion_misa')">
-      <i class="fas fa-church"></i> Ubicación de la Misa
-    </button>
-
-    <button class="pretty-button" onclick="showSection('ubicacion_local')">
-      <i class="fas fa-map-marked-alt"></i> Ubicación del local
-    </button>
-
-    <button class="pretty-button" onclick="showSection('acciones')">
-      <i class="fas fa-arrow-left"></i> Volver
-    </button>
+    <button class="pretty-button" onclick="showSection('ubicacion_misa')"><i class="fas fa-church"></i> Ubicación de la Misa</button>
+    <button class="pretty-button" onclick="showSection('ubicacion_local')"><i class="fas fa-map-marked-alt"></i> Ubicación del local</button>
+    <button class="pretty-button" onclick="showSection('acciones')"><i class="fas fa-arrow-left"></i> Volver</button>
   </div>
 
   <!-- Ubicación: MISA -->
@@ -289,14 +256,10 @@
 
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.4886721436883!2d-57.557190000000006!3d-25.321378100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da8d593c39b8d%3A0x7ded33e3eac2863d!2sPARROQUIA%20Medalla%20Milagrosa!5e0!3m2!1ses-419!2spy!4v1759842607963!5m2!1ses-419!2spy" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-    <button class="pretty-button"
-            onclick="window.open('https://maps.app.goo.gl/gMLcNJoue9WkkREz6', '_blank')">
+    <button class="pretty-button" onclick="window.open('https://maps.app.goo.gl/gMLcNJoue9WkkREz6', '_blank')">
       <i class="fas fa-map-marked-alt"></i> Ir a Google Maps
     </button>
-
-    <button class="pretty-button" onclick="showSection('ubicacion_menu')">
-      <i class="fas fa-arrow-left"></i> Volver
-    </button>
+    <button class="pretty-button" onclick="showSection('ubicacion_menu')"><i class="fas fa-arrow-left"></i> Volver</button>
   </div>
 
   <!-- Ubicación: LOCAL -->
@@ -309,32 +272,44 @@
 
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.6853037679803!2d-57.546450500000006!3d-25.2811696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945dafc640ffbca1%3A0xa4e999c8beef258a!2sCiella%20Espacio%20de%20Eventos!5e0!3m2!1ses-419!2spy!4v1759842755874!5m2!1ses-419!2spy" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-    <button class="pretty-button"
-            onclick="window.open('https://maps.app.goo.gl/JEvyw2GTCJ2ugNFD7', '_blank')">
+    <button class="pretty-button" onclick="window.open('https://maps.app.goo.gl/JEvyw2GTCJ2ugNFD7', '_blank')">
       <i class="fas fa-map-marked-alt"></i> Ir a Google Maps
     </button>
+    <button class="pretty-button" onclick="showSection('ubicacion_menu')"><i class="fas fa-arrow-left"></i> Volver</button>
+  </div>
 
-    <button class="pretty-button" onclick="showSection('ubicacion_menu')">
-      <i class="fas fa-arrow-left"></i> Volver
-    </button>
+  <!-- Vestimenta (NUEVA) -->
+  <div class="section" id="vestimenta">
+    <h1>Mis 15 Años</h1>
+    <h2 class="invitados">Vestimenta</h2>
+    <p class="info-line" style="animation-delay:.3s">✨ <strong>Elegante</strong></p>
+    <p class="info-line" style="animation-delay:.6s">Sugerencia: colores suaves / formales.</p>
+    <button class="pretty-button" onclick="showSection('acciones')"><i class="fas fa-arrow-left"></i> Volver</button>
+  </div>
+
+  <!-- Opción de regalo (NUEVA) -->
+  <div class="section" id="regalo">
+    <h1>Mis 15 Años</h1>
+    <h2 class="invitados">Opción de regalo</h2>
+    <p class="info-line" style="animation-delay:.3s">🎁 <em>Tu presencia es mi mejor regalo.</em></p>
+    <p class="info-line" style="animation-delay:.6s">Si deseas hacer un detalle simbólico, puedes consultarlo con mis padres.</p>
+    <!-- Si luego tienes alias/CBU/link, colócalo aquí -->
+    <button class="pretty-button" onclick="showSection('acciones')"><i class="fas fa-arrow-left"></i> Volver</button>
   </div>
 
   <!-- Notas -->
   <div class="section" id="notas">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
-
     <p>✨ <strong>Vestimenta:</strong> Elegante</p>
     <p>🕖 <strong>Misa:</strong> 19:00 hs</p>
     <p>🎉 <strong>Recepción:</strong> 21:00 hs</p>
     <p>💃 <strong>Presentación:</strong> 22:00 hs</p>
-
     <div class="nota-container">
       <p class="nota-titulo">🧸 Agradecemos profundamente su comprensión.</p>
       <p>Este evento ha sido organizado especialmente para el disfrute de los adultos.</p>
       <p>Por motivos de seguridad y para preservar el ambiente del festejo, les pedimos amablemente que no asistan con niños.</p>
     </div>
-
     <button class="pretty-button" onclick="showSection('acciones')"><i class="fas fa-arrow-left"></i> Volver</button>
   </div>
 
@@ -344,15 +319,13 @@
   </audio>
 
   <script>
-    // Textos
+    // Textos de tipeo
     const message1 = "Hace 15 años nació una hermosa niña, enviada por Dios para ser criada y formada como el más grande tesoro. Hay momentos en la vida que imaginamos, soñamos y esperamos. Uno de esos momentos ha llegado..";
     const message2 = "Quiero compartir junto a las personas que más quiero; por tal motivo, recibe mi invitación a esta celebración tan importante para nosotros.";
 
-    // Velocidad de tipeo (más lento = número mayor)
-    const SPEED_1 = 90;   // pantalla 1
-    const SPEED_2 = 95;   // pantalla 2 (igual o aún más lento)
+    const SPEED_1 = 90;
+    const SPEED_2 = 95;
 
-    // Elementos
     const typingText1 = document.getElementById("typingText");
     const typingText2 = document.getElementById("typingText2");
     const startBtn = document.getElementById("startBtn");
@@ -361,20 +334,16 @@
     const continueBtn3 = document.getElementById("continueBtn3");
     const bgMusic = document.getElementById("bgMusic");
 
-    // Función genérica de tipeo
     function typeWriter(el, text, speed, done) {
       el.textContent = "";
       el.style.opacity = 1;
       let idx = 0;
-      function step() {
+      (function step(){
         if (idx < text.length) {
           el.textContent += text.charAt(idx++);
           setTimeout(step, speed);
-        } else if (typeof done === "function") {
-          done();
-        }
-      }
-      step();
+        } else if (typeof done === "function") { done(); }
+      })();
     }
 
     startBtn.onclick = () => {
@@ -385,7 +354,6 @@
       });
     };
 
-    // Ir a Pantalla 2 e iniciar su tipeo
     continueBtn1.onclick = () => {
       showSection('invitacion');
       continueBtn2.style.display = "none";
@@ -394,36 +362,22 @@
       });
     };
 
-    // Ir a Pantalla 3
-    continueBtn2.onclick = () => {
-      showSection('companias');
-    };
-
-    // Ir al menú principal (acciones)
-    continueBtn3.onclick = () => {
-      showSection('acciones');
-    };
+    continueBtn2.onclick = () => showSection('companias');
+    continueBtn3.onclick = () => showSection('acciones');
 
     function showSection(id) {
       document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
       document.getElementById(id).classList.add('active');
-      // Asegurar que las secciones con texto de tipeo vuelvan a mostrar el cursor
-      const t = document.querySelector(`#${id} .typing`);
-      if (t) t.classList.add('typing');
     }
 
     function confirmarAsistencia() {
       const opcion = confirm("¿Vas a asistir?\nPresiona 'Aceptar' para SÍ 💖 o 'Cancelar' para NO 😔");
       const telefono = '+595992812700';
       const mensaje = opcion ? encodeURIComponent('Sí, voy a asistir 💖') : encodeURIComponent('No voy a asistir 😔');
-      const enlace = `https://wa.me/${telefono}?text=${mensaje}`;
-      window.open(enlace, '_blank');
+      window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
     }
 
-    // Precargar la fuente para mejor rendimiento
-    document.fonts.load('1em "Kitten Café"').then(() => {
-      console.log('Fuente Kitten Café cargada');
-    });
+    document.fonts.load('1em "Kitten Café"').then(() => {});
   </script>
 </body>
 </html>
