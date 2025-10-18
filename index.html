@@ -169,6 +169,24 @@
     .invitados { font-size: 10vw; }
     .fecha-bonita { font-size: 7.5vw; }
   }
+    /* === Solo MENÚ de acciones: botones más chicos === */
+#acciones .btn-sm{
+  font-size: 3.9vw;
+  padding: 10px 18px;
+  border-radius: 28px;
+  margin-top: 10px;
+  width: min(400px, 86%);
+  gap: 8px;              /* espacio icono-texto */
+}
+#acciones .btn-sm i{ font-size: 1.1em; }
+
+@media (min-width:768px){
+  #acciones .btn-sm{ font-size: 18px; padding: 10px 20px; width: 360px; }
+}
+@media (max-width:480px){
+  #acciones .btn-sm{ font-size: 4.4vw; padding: 9px 14px; width: 90%; }
+}
+
   </style>
 </head>
 <body>
@@ -204,38 +222,37 @@
   </div>
 
   <!-- NUEVA: Pantalla 4 (MENÚ) -->
-  <div class="section" id="acciones">
-    <h1>Mis 15 Años</h1>
+  <!-- MENÚ -->
+<div class="section" id="acciones">
+  <h1>Mis 15 Años</h1>
 
-    <!-- NUEVOS textos en lugar del nombre -->
-    <h2 class="invitados">Están cordialmente invitados</h2>
-    <p class="fecha-bonita">Diciembre 05 Viernes 21:30hs</p>
+  <h2 class="invitados">Están cordialmente invitados</h2>
+  <p class="fecha-bonita">Diciembre 05 Viernes 21:30hs</p>
 
-    <!-- Botones con íconos -->
-    <button class="pretty-button" onclick="showSection('ubicacion_menu')">
-      <i class="fas fa-map-marked-alt"></i> Ver ubicación
-    </button>
+  <button class="pretty-button btn-sm" onclick="showSection('ubicacion_menu')">
+    <i class="fas fa-map-marked-alt"></i><span>Ver ubicación</span>
+  </button>
 
-    <button class="pretty-button" onclick="confirmarAsistencia()">
-      <i class="fab fa-whatsapp"></i> Confirmar asistencia
-    </button>
+  <button class="pretty-button btn-sm" onclick="confirmarAsistencia()">
+    <i class="fab fa-whatsapp"></i><span>Confirmar asistencia</span>
+  </button>
 
-    <button class="pretty-button" onclick="showSection('regalo')">
-      <i class="fas fa-gift"></i> Opción de regalo
-    </button>
+  <button class="pretty-button btn-sm" onclick="showSection('regalo')">
+    <i class="fas fa-gift"></i><span>Opción de regalo</span>
+  </button>
 
-    <button class="pretty-button" onclick="showSection('vestimenta')">
-      <i class="fas fa-tshirt"></i> Vestimenta
-    </button>
+  <button class="pretty-button btn-sm" onclick="showSection('vestimenta')">
+    <i class="fas fa-tshirt"></i><span>Vestimenta</span>
+  </button>
 
-    <button class="pretty-button" onclick="showSection('notas')">
-      <i class="fas fa-info-circle"></i> Nota importante
-    </button>
+  <button class="pretty-button btn-sm" onclick="showSection('notas')">
+    <i class="fas fa-info-circle"></i><span>Nota importante</span>
+  </button>
 
-    <button class="pretty-button" style="margin-top:24px" onclick="showSection('main')">
-      <i class="fas fa-arrow-left"></i> Volver
-    </button>
-  </div>
+  <button class="pretty-button btn-sm" style="margin-top:16px" onclick="showSection('main')">
+    <i class="fas fa-arrow-left"></i><span>Volver</span>
+  </button>
+</div>
 
   <!-- Menú de ubicaciones -->
   <div class="section" id="ubicacion_menu">
@@ -381,3 +398,4 @@
   </script>
 </body>
 </html>
+
