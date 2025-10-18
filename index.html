@@ -6,7 +6,7 @@
   <title>Mis 15 Años</title>
 
   <!-- Fuentes elegantes -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Allura&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Allura&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <!-- Íconos Font Awesome -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
@@ -86,19 +86,20 @@
     to   { text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493; }
   }
 
- #typingText { 
-    font-family: 'Poppins', sans-serif; /* Usar Poppins que sí tiene itálica */
+  /* Texto con efecto de tipeo */
+  .typing {
+    font-family: 'Poppins', sans-serif;
     font-size: 5vw; 
     font-style: italic;
-    white-space: pre-wrap; 
-    min-height: 3em; 
-    opacity: 0; 
-    transition: opacity .5s ease-in; 
-    line-height: 1.4;
+    white-space: pre-wrap;
+    min-height: 3em;
+    opacity: 0;
+    transition: opacity .5s ease-in;
+    line-height: 1.5;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-    font-weight: 300; /* Hacerla más delgada para mejor legibilidad en cursiva */
+    font-weight: 300;
   }
-  #typingText::after { content: '|'; animation: blink 1s step-start infinite; }
+  .typing::after { content: '|'; animation: blink 1s step-start infinite; }
   @keyframes blink { 50% { opacity: 0; } }
 
   .info-line {
@@ -106,7 +107,7 @@
     font-family: 'Kitten Café', 'Poppins', sans-serif;
     font-size: 4.5vw;
     opacity: 0;
-    animation: fadeInText 2s ease forwards;
+    animation: fadeInText 1s ease forwards;
   }
 
   .glow-text {
@@ -158,9 +159,7 @@
     transform: scale(1.05); 
   }
 
-  p {
-    font-family: 'Kitten Café', 'Poppins', sans-serif;
-  }
+  p { font-family: 'Kitten Café', 'Poppins', sans-serif; }
 
   .nota-container {
     margin-top: 20px;
@@ -173,10 +172,6 @@
     font-family: 'Kitten Café', 'Poppins', sans-serif;
   }
 
-  .nota-container p {
-    margin-bottom: 8px;
-  }
-
   .nota-titulo {
     font-weight: 600;
     font-size: 1.1em;
@@ -187,12 +182,11 @@
   @media (min-width: 768px) {
     h1 { font-size: 80px; }
     .nombre { font-size: 60px; }
-    #typingText { font-size: 24px; }
-    .info-line { font-size: 20px; }
-    .pretty-button { font-size: 20px; padding: 15px 40px; }
+    .typing { font-size: 24px; }
+    .info-line, .pretty-button { font-size: 20px; }
+    .pretty-button { padding: 15px 40px; }
   }
 
-  /* Estilos para mejorar la legibilidad en móviles */
   @media (max-width: 480px) {
     .section {
       padding: 15px;
@@ -200,45 +194,64 @@
       width: calc(100% - 20px);
       height: calc(100% - 20px);
     }
-    
-    #typingText {
-      font-size: 5.5vw;
-      line-height: 1.5;
-    }
-    
-    .info-line {
-      font-size: 5vw;
-    }
+    .typing { font-size: 5.5vw; line-height: 1.6; }
+    .info-line { font-size: 5vw; }
   }
-</style>
-
+  </style>
 </head>
 <body>
   <div class="background"></div>
 
-  <!-- Pantalla principal -->
+  <!-- Pantalla 1: principal (solo texto blanco con tipeo) -->
   <div class="section active" id="main">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
 
-    <button class="pretty-button" id="startBtn"><i class="fas fa-play"></i> Abrirr</button>
+    <button class="pretty-button" id="startBtn"><i class="fas fa-play"></i> Abrir</button>
 
-    <p id="typingText"></p>
+    <p id="typingText" class="typing"></p>
 
-    <p id="padres" class="info-line glow-text"><strong>También mis padres:</strong> Mario Cibils y Carolina De la Cruz de Cibils</p>
-    <p id="padrinos" class="info-line glow-text"><strong>También mis padrinos:</strong> Guido Aguirre y Berna Cibils</p>
+    <!-- (Eliminado: “También mis padres” y “También mis padrinos”) -->
 
     <button class="pretty-button" id="continueBtn" style="display:none;">
       <i class="fas fa-arrow-right"></i> Continuar
     </button>
   </div>
 
-  <!-- Menú de acciones -->
+  <!-- Pantalla 2: invitación (texto con mismo efecto) -->
+  <div class="section" id="invitacion">
+    <h1>Mis 15 Años</h1>
+    <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
+
+    <p id="typingText2" class="typing"></p>
+
+    <button class="pretty-button" id="continueBtn2" style="display:none;">
+      <i class="fas fa-arrow-right"></i> Continuar
+    </button>
+  </div>
+
+  <!-- Pantalla 3: compañía de padres / padrinos -->
+  <div class="section" id="companias">
+    <h1>Mis 15 Años</h1>
+    <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
+
+    <p class="info-line glow-text" style="animation-delay:.2s"><strong>En compañía de mis padres:</strong></p>
+    <p class="info-line" style="animation-delay:.5s">Carolina</p>
+    <p class="info-line" style="animation-delay:.8s">Mario</p>
+
+    <p class="info-line glow-text" style="animation-delay:1.1s; margin-top:12px"><strong>Padrinos:</strong></p>
+    <p class="info-line" style="animation-delay:1.4s">Guido y Berna</p>
+
+    <button class="pretty-button" id="continueBtn3" style="margin-top:24px">
+      <i class="fas fa-arrow-right"></i> Continuar
+    </button>
+  </div>
+
+  <!-- Menú de acciones (tu segunda imagen) -->
   <div class="section" id="acciones">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
 
-    <!-- AHORA lleva al menú de ubicaciones -->
     <button class="pretty-button" onclick="showSection('ubicacion_menu')"><i class="fas fa-map-marker-alt"></i> Ver ubicación</button>
     <button class="pretty-button" onclick="confirmarAsistencia()"><i class="fab fa-whatsapp"></i> Confirmar asistencia</button>
     <button class="pretty-button" onclick="showSection('notas')"><i class="fas fa-info-circle"></i> Nota importante</button>
@@ -248,7 +261,7 @@
     </button>
   </div>
 
-  <!-- NUEVA: Menú de ubicaciones -->
+  <!-- Menú de ubicaciones -->
   <div class="section" id="ubicacion_menu">
     <h1>Mis 15 Años</h1>
     <h2 class="nombre">Amira Abigail Cibils De La Cruz</h2>
@@ -274,7 +287,7 @@
     <p><strong>🕘 Hora:</strong> 18:00 hs</p>
     <p><strong>📍 Dirección:</strong> (Misa) — Parroquia Medalla Milagrosa</p>
 
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.4886721436883!2d-57.557190000000006!3d-25.321378100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da8d593c39b8d%3A0x7ded33e3eac2863d!2sPARROQUIA%20Medalla%20Milagrosa!5e0!3m2!1ses-419!2spy!4v1759842607963!5m2!1ses-419!2spy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.4886721436883!2d-57.557190000000006!3d-25.321378100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da8d593c39b8d%3A0x7ded33e3eac2863d!2sPARROQUIA%20Medalla%20Milagrosa!5e0!3m2!1ses-419!2spy!4v1759842607963!5m2!1ses-419!2spy" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
     <button class="pretty-button"
             onclick="window.open('https://maps.app.goo.gl/gMLcNJoue9WkkREz6', '_blank')">
@@ -294,7 +307,7 @@
     <p><strong>🕘 Hora:</strong> 21:30 hs</p>
     <p><strong>📍 Dirección:</strong> Local - Ciella Espacio de Eventos</p>
 
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.6853037679803!2d-57.546450500000006!3d-25.2811696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945dafc640ffbca1%3A0xa4e999c8beef258a!2sCiella%20Espacio%20de%20Eventos!5e0!3m2!1ses-419!2spy!4v1759842755874!5m2!1ses-419!2spy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.6853037679803!2d-57.546450500000006!3d-25.2811696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945dafc640ffbca1%3A0xa4e999c8beef258a!2sCiella%20Espacio%20de%20Eventos!5e0!3m2!1ses-419!2spy!4v1759842755874!5m2!1ses-419!2spy" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
     <button class="pretty-button"
             onclick="window.open('https://maps.app.goo.gl/JEvyw2GTCJ2ugNFD7', '_blank')">
@@ -331,40 +344,72 @@
   </audio>
 
   <script>
-    const message = "Hace 15 años nació una hermosa niña, enviada por Dios para ser criada y formada como el más grande tesoro. Hay momentos en la vida que imaginamos, soñamos y esperamos. Uno de esos momentos ha llegado..";
-    let i = 0;
-    const typingText = document.getElementById("typingText");
+    // Textos
+    const message1 = "Hace 15 años nació una hermosa niña, enviada por Dios para ser criada y formada como el más grande tesoro. Hay momentos en la vida que imaginamos, soñamos y esperamos. Uno de esos momentos ha llegado..";
+    const message2 = "Quiero compartir junto a las personas que más quiero; por tal motivo, recibe mi invitación a esta celebración tan importante para nosotros.";
+
+    // Velocidad de tipeo (más lento = número mayor)
+    const SPEED_1 = 90;   // pantalla 1
+    const SPEED_2 = 95;   // pantalla 2 (igual o aún más lento)
+
+    // Elementos
+    const typingText1 = document.getElementById("typingText");
+    const typingText2 = document.getElementById("typingText2");
     const startBtn = document.getElementById("startBtn");
-    const continueBtn = document.getElementById("continueBtn");
-    const padres = document.getElementById("padres");
-    const padrinos = document.getElementById("padrinos");
+    const continueBtn1 = document.getElementById("continueBtn");
+    const continueBtn2 = document.getElementById("continueBtn2");
+    const continueBtn3 = document.getElementById("continueBtn3");
     const bgMusic = document.getElementById("bgMusic");
 
-    function typeText() {
-      if (i < message.length) {
-        typingText.textContent += message.charAt(i);
-        i++;
-        // Velocidad más lenta: 80ms por caracter (antes era 40ms)
-        setTimeout(typeText, 80);
-      } else {
-        padres.style.opacity = 1;
-        padrinos.style.opacity = 1;
-        continueBtn.style.display = "inline-flex";
+    // Función genérica de tipeo
+    function typeWriter(el, text, speed, done) {
+      el.textContent = "";
+      el.style.opacity = 1;
+      let idx = 0;
+      function step() {
+        if (idx < text.length) {
+          el.textContent += text.charAt(idx++);
+          setTimeout(step, speed);
+        } else if (typeof done === "function") {
+          done();
+        }
       }
+      step();
     }
 
     startBtn.onclick = () => {
       startBtn.style.display = "none";
-      typingText.style.opacity = 1;
       bgMusic.play().catch(() => {});
-      typeText();
+      typeWriter(typingText1, message1, SPEED_1, () => {
+        continueBtn1.style.display = "inline-flex";
+      });
     };
 
-    continueBtn.onclick = () => showSection('acciones');
+    // Ir a Pantalla 2 e iniciar su tipeo
+    continueBtn1.onclick = () => {
+      showSection('invitacion');
+      continueBtn2.style.display = "none";
+      typeWriter(typingText2, message2, SPEED_2, () => {
+        continueBtn2.style.display = "inline-flex";
+      });
+    };
+
+    // Ir a Pantalla 3
+    continueBtn2.onclick = () => {
+      showSection('companias');
+    };
+
+    // Ir al menú principal (acciones)
+    continueBtn3.onclick = () => {
+      showSection('acciones');
+    };
 
     function showSection(id) {
       document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
       document.getElementById(id).classList.add('active');
+      // Asegurar que las secciones con texto de tipeo vuelvan a mostrar el cursor
+      const t = document.querySelector(`#${id} .typing`);
+      if (t) t.classList.add('typing');
     }
 
     function confirmarAsistencia() {
@@ -382,4 +427,3 @@
   </script>
 </body>
 </html>
-
