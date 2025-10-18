@@ -89,11 +89,13 @@
   #typingText { 
     font-family: 'Kitten Café', 'Poppins', sans-serif;
     font-size: 5vw; 
+    font-style: italic; /* Texto en cursiva */
     white-space: pre-wrap; 
     min-height: 3em; 
     opacity: 0; 
     transition: opacity .5s ease-in; 
     line-height: 1.4;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
   }
   #typingText::after { content: '|'; animation: blink 1s step-start infinite; }
   @keyframes blink { 50% { opacity: 0; } }
@@ -341,7 +343,8 @@
       if (i < message.length) {
         typingText.textContent += message.charAt(i);
         i++;
-        setTimeout(typeText, 40);
+        // Velocidad más lenta: 80ms por caracter (antes era 40ms)
+        setTimeout(typeText, 80);
       } else {
         padres.style.opacity = 1;
         padrinos.style.opacity = 1;
@@ -378,4 +381,3 @@
   </script>
 </body>
 </html>
-
