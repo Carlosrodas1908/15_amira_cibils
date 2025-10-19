@@ -74,10 +74,26 @@
     opacity: 0; animation: fadeInName 2s ease 1.2s forwards, glow 2s ease-in-out infinite alternate;
   }
 
-      .padrespadrinos {
-    font-family: 'Kitten Café', 'Allura', cursive;
-    font-size: 8vw; color: #ffffff; margin-bottom: 20px;
-  }
+   .padrespadrinos{
+  font-family: 'Kitten Café','Allura',cursive;
+  font-style: normal;            /* la fuente ya viene manuscrita/inclinada */
+  font-weight: 400;
+  font-size: clamp(26px, 6.6vw, 54px);
+  line-height: 1.05;
+  letter-spacing: .02em;
+  color:#fff;
+
+  /* suavizado y legibilidad */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  /* activa ligaduras y alternancias para trazos conectados */
+  font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
+  font-feature-settings: "liga" 1, "clig" 1, "calt" 1, "kern" 1, "swsh" 1;
+
+  /* un toque sutil de relieve (puedes quitarlo si la quieres plana) */
+  text-shadow: 0 0 1px rgba(0,0,0,.15);
+}
     
   @keyframes flyIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
   @keyframes fadeInName { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -466,5 +482,6 @@
   </script>
 </body>
 </html>
+
 
 
